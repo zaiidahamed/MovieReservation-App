@@ -43,4 +43,57 @@
     <string name="edit2">Edit</string>
     <string name="remove">Remove</string>
 
+
+    <string name="main_add_button1">+Add</string>
+    <string name="main_add_button2">+Add</string>
+    <string name="main_add_button3">+Add</string>
+    <string name="main_add_button4">+Add</string>
+    <string name="main_add_button5">+Add</string>
+    <string name="main_add_button6">+Add</string>
+    <string name="addtocart_button">Add to Cart</string>
+    <string name="myCart_noOfItems">4</string>
+    <string name="myCart_totalPrice">Rs.400.00</string>
+    <string name="myCart_button" />
+    <string name="myCart_confirmButton">Confirm</string>
+    <string name="myCart_deleteButton">Delete</string>
+    <string name="selectFood_itemIncrease">1</string>
+    <string name="myCart_itemIncrease1">1</string>
+    <string name="myCart_itemIncrease2">1</string>
+    <string name="myCart_itemIncrease3">1</string>
+    <string name="myCart_itemIncrease4">1</string>
+    <string name="notification_Order1">Order ID 56788</string>
+    <string name="notification_Order2">Order ID 98566</string>
+    <string name="notification_Order3">Order ID 45896</string>
+    <string name="notification_Order4">Order ID 34789</string>
+    <string name="notification_Order5">Order ID 23412</string>
+    <string name="notification_Order6">Order ID 89347</string>
+    <string name="notification_orderReceiveTime1">5 minute ago</string>
+    <string name="notification_orderReceiveTime2">17 minute ago</string>
+    <string name="notification_orderReceiveTime3">46 minute ago</string>
+    <string name="notification_orderReceiveTime4">2 hours ago</string>
+    <string name="notification_orderReceiveTime5">7 hours ago</string>
+    <string name="notification_orderReceiveTime6">1 day ago</string>
+    <string name="viewOrder_cusName">  Imasha Kuruppu</string>
+    <string name="viewOrder_contactNum">0717073719</string>
+    <string name="viewOrder_sheetNum">L4003</string>
+    <string name="viewOrder_orderID">155666</string>
+    <string name="viewOrder_dateTime">15/02/2021</string>
+    <string name="viewOrder_product1">Coca Cola</string>
+    <string name="viewOrder_product2">Pepsi</string>
+    <string name="viewOrder_product3">7Up</string>
+    <string name="viewOrder_product4">Popcorn</string>
+    <string name="viewOrder_noOfItems1">1</string>
+    <string name="viewOrder_noOfItems2">1</string>
+    <string name="viewOrder_noOfItems3">1</string>
+    <string name="viewOrder_noOfItems4">1</string>
+    <string name="viewOrder_nextButton">Next</string>
+    <string name="viewOrder_numberOfItems">4</string>
+    <string name="viewOrder_totalPrice">Rs.400.00</string>
+    <string name="viewOrder_closeOrderButton">Close Order</string>
+    <string name="viewOrder_printBillButton">Print E-Bill</string>
+    <string name="addFood_foodName">Enter Food Name</string>
+    <string name="addFood_uploadImageButton">Upload Image</string>
+    <string name="addFood_price">Enter Price</string>
+    <string name="addFood_submitButton">Submit</string>/>
+
 </resources>
