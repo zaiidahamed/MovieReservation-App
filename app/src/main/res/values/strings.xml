@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">BlueSky Cinema</string>
+    <string name="avSeat">26</string>
+    <string name="textView_showDate" />
+    <string name="movie1">John Wick 3</string>
+    <string name="movie2">Venom</string>
+    <string name="movie3">Spider-Man</string>
+    <string name="time1">10:00 AM</string>
+    <string name="time2">2:00 PM</string>
+    <string name="time3">7:00 PM</string>
+    <string name="continue1">Continue</string>
+    <string name="totalSeats">200</string>
+    <string name="avSeats">26</string>
+    <string name="totalBox">15</string>
+    <string name="avBox">11</string>
+    <string name="editFullTckts" />
+    <string name="editBoxTckts" />
+    <string name="totalTckts">2</string>
+    <string name="amount">Rs. 650.00</string>
+    <string name="movieName">John Wick 3</string>
+    <string name="print_date">12-08-2021</string>
+    <string name="print_time">8:30 PM</string>
+    <string name="print_tot">Rs. 650.00</string>
+    <string name="apply">Apply</string>
+    <string name="show_dis">Rs. 150.00</string>
+    <string name="show_amnt">Rs. 500.00</string>
+    <string name="confirm">Confirm</string>
+    <string name="number_get">07XXXXXXX</string>
+    <string name="reserveBtn">Resrve Now</string>
+    <string name="totalSeats1">200</string>
+    <string name="avSeats1">25</string>
+    <string name="totalBox1">15</string>
+    <string name="avBox1">11</string>
+    <string name="editFullTckts1" />
+    <string name="editBoxTckts2" />
+    <string name="totalTckts2">2</string>
+    <string name="amount1">Rs. 1300.00</string>
+    <string name="updateBtn2">Update</string>
+    <string name="movieName2">John Wick 3</string>
+    <string name="print_date1">12-08-2021</string>
+    <string name="print_time1">8:30 PM</string>
+    <string name="print_tot1">Rs. 650.00</string>
+    <string name="edit2">Edit</string>
+    <string name="remove">Remove</string>
+
+</resources>
