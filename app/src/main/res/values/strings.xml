@@ -96,4 +96,41 @@
     <string name="addFood_price">Enter Price</string>
     <string name="addFood_submitButton">Submit</string>/>
 
+
+    <string name="userName">Imasha Kuruppu</string>
+    <string name="userEmail">imashakuruppu25@gmail.com</string>
+    <string name="userPhone">076 900 7598</string>
+    <string name="userBday">April 25, 1999</string>
+    <string name="changePhoto">Change Photo</string>
+    <string name="review">"John Wick Chapter 3 offers great action and a more in-depth
+        at his World in comparison to the first two entries. "</string>
+    <string name="header_profile">Profile</string>
+    <string name="totpoints">123</string>
+    <string name="totalpoints">123</string>
+    <string name="totwatched">06</string>
+    <string name="acc_info">Account Information</string>
+    <string name="my_reserv">My Reservation</string>
+    <string name="theater_rating">Rating Theater</string>
+    <string name="privacy">Privacy Policy</string>
+    <string name="header_favourite">My Favoueites</string>
+    <string name="fav_btn">Favourites</string>
+    <string name="nowshowing_btn">Now Showing</string>
+    <string name="movie_type">Crime</string>
+    <string name="movie_duration">2hr 10m | R</string>
+    <string name="remove_fev">Remove</string>
+    <string name="movie_name2">Blade Runner 2045</string>
+    <string name="movie_name3">Alita</string>
+    <string name="movie_4">Kid King</string>
+    <string name="details"> Details</string>
+    <string name="review_pg_btn">Reviews</string>
+    <string name="header_accinfo">Account Information</string>
+    <string name="header_writereview">Write a Review</string>
+    <string name="header_review">Reviews</string>
+    <string name="theater_name">BlueSky Cinema</string>
+    <string name="address">137, Kandy Road, Kadawatha</string>
+    <string name="mobile">011 2 975 889</string>
+    <string name="email">bluskycinema@gmail.com</string>
+    <string name="about">A movie theater, cinema, or cinema hall, also known as a picture house, the pictures, picture theatre, or the movies, is a building that contains auditoria for. viewing films for entertainment. Most, but not all, theaters are commercial operations catering to the general public, who attend by purchasing a ticket.</string>
+    <string name="theater_feedback">Enter your feedback here....</string>
+
 </resources>
