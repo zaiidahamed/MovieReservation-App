@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0F1B2B"
-    tools:context=".ReserveNowActivity">
+    tools:context=".Zaid.ReserveNowActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

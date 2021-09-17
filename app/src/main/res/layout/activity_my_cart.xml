@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".my_cart">
+    tools:context=".Janani.my_cart">
 
     <EditText
         android:id="@+id/editTextTextPersonName6"

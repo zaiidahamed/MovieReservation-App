@@ -1,4 +1,4 @@
-package com.example.blueskycinema;
+package com.example.blueskycinema.Zaid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.example.blueskycinema.R;
 
 import java.util.Calendar;
 
