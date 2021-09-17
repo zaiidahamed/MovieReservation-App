@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#0F1B2B"
-        tools:context=".Summery">
+        tools:context=".Zaid.Summery">
 
         <ImageView
             android:id="@+id/arraow2"

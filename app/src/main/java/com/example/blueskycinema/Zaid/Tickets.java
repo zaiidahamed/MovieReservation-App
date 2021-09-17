@@ -1,4 +1,4 @@
-package com.example.blueskycinema;
+package com.example.blueskycinema.Zaid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.blueskycinema.R;
 
 public class Tickets extends AppCompatActivity {
 

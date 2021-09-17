@@ -1,14 +1,16 @@
-package com.example.blueskycinema;
+package com.example.blueskycinema.Zaid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class changeDate extends AppCompatActivity {
+import com.example.blueskycinema.R;
+
+public class EditReservation extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_date);
+        setContentView(R.layout.activity_edit_reservation);
     }
 }
