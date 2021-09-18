@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BlueSkyCinema">
-        <activity android:name=".changeDate"></activity>
+        <activity android:name=".changeDate" />
         <activity android:name=".EditReservation" />
         <activity android:name=".Confirmation" />
         <activity android:name=".Summery" />
         <activity android:name=".Tickets" />
         <activity android:name=".ReserveNowActivity" />
+        <activity android:name=".AddFood"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
