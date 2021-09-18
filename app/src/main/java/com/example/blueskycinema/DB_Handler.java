@@ -56,4 +56,21 @@ public class DB_Handler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
+    //Zaid function implementation
+
+
+
+    //Imasha function implementation
+
+
+
+
+    //Hasith function implementation
+
+
+
+
+    //Janani function implementation
+
 }
