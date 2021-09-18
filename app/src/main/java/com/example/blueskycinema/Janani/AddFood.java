@@ -1,8 +1,10 @@
-package com.example.blueskycinema;
+package com.example.blueskycinema.Janani;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.blueskycinema.R;
 
 public class AddFood extends AppCompatActivity {
 

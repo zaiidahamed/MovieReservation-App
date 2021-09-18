@@ -16,7 +16,7 @@
         <activity android:name=".Summery" />
         <activity android:name=".Tickets" />
         <activity android:name=".ReserveNowActivity" />
-        <activity android:name=".AddFood"/>
+        <activity android:name=".Janani.AddFood"/>
 
         <activity android:name=".Zaid.changeDate"></activity>
         <activity android:name=".Zaid.EditReservation" />
