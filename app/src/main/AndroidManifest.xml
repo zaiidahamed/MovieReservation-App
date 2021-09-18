@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BlueSkyCinema">
+
         <activity android:name=".changeDate" />
         <activity android:name=".EditReservation" />
         <activity android:name=".Confirmation" />
@@ -16,6 +17,14 @@
         <activity android:name=".Tickets" />
         <activity android:name=".ReserveNowActivity" />
         <activity android:name=".AddFood"/>
+
+        <activity android:name=".Zaid.changeDate"></activity>
+        <activity android:name=".Zaid.EditReservation" />
+        <activity android:name=".Zaid.Confirmation" />
+        <activity android:name=".Zaid.Summery" />
+        <activity android:name=".Zaid.Tickets" />
+        <activity android:name=".Zaid.ReserveNowActivity" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
