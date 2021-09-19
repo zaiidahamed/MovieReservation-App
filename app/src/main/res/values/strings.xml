@@ -1,4 +1,6 @@
 <resources>
+
+<!--    Zaid-Strings-->
     <string name="app_name">BlueSky Cinema</string>
     <string name="avSeat">26</string>
     <string name="textView_showDate" />
@@ -44,6 +46,7 @@
     <string name="remove">Remove</string>
 
 
+<!--    Janani-Strings-->
     <string name="main_add_button1">+Add</string>
     <string name="main_add_button2">+Add</string>
     <string name="main_add_button3">+Add</string>
@@ -97,6 +100,7 @@
     <string name="addFood_submitButton">Submit</string>/>
 
 
+<!--    Imasha-Strings-->
     <string name="userName">Imasha Kuruppu</string>
     <string name="userEmail">imashakuruppu25@gmail.com</string>
     <string name="userPhone">076 900 7598</string>
@@ -134,7 +138,7 @@
     <string name="theater_feedback">Enter your feedback here....</string>
 
 
-    #Hasith-Strings
+<!--    Hasith-Strings-->
     <string name="ongoing_movies_btn">10</string>
     <string name="total_booking_btn">125</string>
     <string name="total_ratings_btn">21</string>
