@@ -10,20 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BlueSkyCinema">
 
-        <activity android:name=".changeDate" />
-        <activity android:name=".EditReservation" />
-        <activity android:name=".Confirmation" />
-        <activity android:name=".Summery" />
-        <activity android:name=".Tickets" />
-        <activity android:name=".ReserveNowActivity" />
-        <activity android:name=".Janani.AddFood"/>
-
-        <activity android:name=".Zaid.changeDate"></activity>
+<!--        Zaid-->
+        <activity android:name=".Zaid.changeDate"/>
         <activity android:name=".Zaid.EditReservation" />
         <activity android:name=".Zaid.Confirmation" />
         <activity android:name=".Zaid.Summery" />
         <activity android:name=".Zaid.Tickets" />
         <activity android:name=".Zaid.ReserveNowActivity" />
+
+<!--        Janani-->
+        <activity android:name=".Janani.AddFood"/>
+        <activity android:name=".Janani.FoodMain"/>
+        <activity android:name=".Janani.SelectFood"/>
+        <activity android:name=".Janani.MyCart"/>
+        <activity android:name=".Janani.Notifications"/>
+        <activity android:name=".Janani.ViewOrder"/>
+        <activity android:name=".Janani.ViewPayment"/>
 
         <activity android:name=".MainActivity">
             <intent-filter>
