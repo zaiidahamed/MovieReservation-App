@@ -3,11 +3,14 @@ package com.example.blueskycinema;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 public class DB_Handler extends SQLiteOpenHelper {
 
+    Context context;
+    
     //Database name
     public static final String DATABASE_NAME = "Movie.db";
 
@@ -48,8 +51,15 @@ public class DB_Handler extends SQLiteOpenHelper {
                         USER_COLUMN_PASSWORD+" TEXT)";
 
         //execute tables
-        db.execSQL(create_movies_table);
-        db.execSQL(create_users_table);
+        try {
+            db.execSQL(create_movies_table);
+            db.execSQL(create_users_table);
+
+            Toast.makeText(context, "Table created successfully!", Toast.LENGTH_SHORT).show();
+        }
+        catch (Exception e){
+            Toast.makeText(context, "Table creation failed!:"+ e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -57,7 +67,7 @@ public class DB_Handler extends SQLiteOpenHelper {
 
     }
 
-    //Zaid function implementation
+    //Zaid function implementation123
 
 
 
