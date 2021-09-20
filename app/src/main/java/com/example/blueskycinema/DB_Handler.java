@@ -77,6 +77,14 @@ public class DB_Handler extends SQLiteOpenHelper {
     public static final String RATING_COLUMN_COUNT = "count";
     public static final String RATING_COLUMN_DATE = "date";
 
+    //Theater Rating table
+    public static final String THEATER_RATING_TABLE = "theater_rating_table";
+    public static final String THEATER_RATING_COLUMN_ID = "ratingID";
+    public static final String THEATER_RATING_COLUMN_USERID = "userID";
+    public static final String THEATER_RATING_COLUMN_COUNT = "count";
+    public static final String THEATER_RATING_COLUMN_MESSAGE = "message";
+    public static final String THEATER_RATING_COLUMN_DATE = "date";
+
     //Favorite table
     public static final String FAVORITE_TABLE = "favorite_table";
     public static final String FAVORITE_COLUMN_ID = "favID";
@@ -158,6 +166,15 @@ public class DB_Handler extends SQLiteOpenHelper {
                         RATING_COLUMN_COUNT+" INTEGER, "+
                         RATING_COLUMN_DATE+" DATE)";
 
+        //create theater rating table
+        String create_theater_rating_table =
+                "CREATE TABLE "+THEATER_RATING_TABLE+" ( "+
+                        THEATER_RATING_COLUMN_ID+" INTEGER PRIMARY KEY, " +
+                        THEATER_RATING_COLUMN_USERID+" INTEGER, "+
+                        THEATER_RATING_COLUMN_COUNT+" INTEGER, "+
+                        THEATER_RATING_COLUMN_MESSAGE+" TEXT,"+
+                        THEATER_RATING_COLUMN_DATE+" DATE)";
+
         //create favorite table
         String create_favorite_table =
                 "CREATE TABLE "+FAVORITE_TABLE+" ( "+
@@ -177,6 +194,7 @@ public class DB_Handler extends SQLiteOpenHelper {
 
             db.execSQL(create_reviews_table);
             db.execSQL(create_rating_table);
+            db.execSQL(create_theater_rating_table);
             db.execSQL(create_favorite_table);
 
             Toast.makeText(context, "Table created successfully!", Toast.LENGTH_SHORT).show();
