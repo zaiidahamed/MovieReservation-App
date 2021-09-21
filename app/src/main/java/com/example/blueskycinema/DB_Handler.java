@@ -4,8 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 public class DB_Handler extends SQLiteOpenHelper {
 
     //Database name
@@ -24,6 +22,12 @@ public class DB_Handler extends SQLiteOpenHelper {
     public static final String USER_COLUMN_EMAIL = "email";
     public static final String USER_COLUMN_PASSWORD = "password";
 
+    //Food table
+    public static final String FOOD_TABLE = "food_table";
+    public static final String COLUMN_1 = "foodID";
+    public static final String COLUMN_2 = "name";
+    public static final String COLUMN_3 = "image";
+    public static final String COLUMN_4 = "price";
 
     public DB_Handler(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -47,9 +51,19 @@ public class DB_Handler extends SQLiteOpenHelper {
                         USER_COLUMN_EMAIL+" TEXT, "+
                         USER_COLUMN_PASSWORD+" TEXT)";
 
+        //create food table
+        String create_food_table =
+                "CREATE TABLE "+FOOD_TABLE+" ( "+
+                        COLUMN_1+" INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        COLUMN_2+" TEXT, "+
+                        COLUMN_3+" TEXT, "+
+                        COLUMN_4+" FLOAT)";
+
+
         //execute tables
         db.execSQL(create_movies_table);
         db.execSQL(create_users_table);
+        db.execSQL(create_food_table);
     }
 
     @Override
@@ -72,5 +86,9 @@ public class DB_Handler extends SQLiteOpenHelper {
 
 
     //Janani function implementation
+    public boolean insertData(String name, String image, String marks) {
+        return true;
+    }
+
 
 }
