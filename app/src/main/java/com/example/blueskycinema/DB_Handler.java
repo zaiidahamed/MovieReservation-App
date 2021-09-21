@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 public class DB_Handler extends SQLiteOpenHelper {
 
     Context context;
-    
+
     //Database name
     public static final String DATABASE_NAME = "Movie.db";
 
@@ -95,7 +95,7 @@ public class DB_Handler extends SQLiteOpenHelper {
         //create movie table
         String create_movies_table =
                 "CREATE TABLE "+MOVIE_TABLE+" ( "+
-                        MOVIE_COLUMN_ID+" INTEGER PRIMARY KEY, " +
+                        MOVIE_COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         MOVIE_COLUMN_NAME+" TEXT, "+
                         MOVIE_COLUMN_GENRE+" TEXT, "+
                         MOVIE_COLUMN_DURATION+" TEXT, "+
@@ -127,7 +127,7 @@ public class DB_Handler extends SQLiteOpenHelper {
         //create booking table
         String create_booking_table =
                 "CREATE TABLE "+BOOKING_TABLE+" ( "+
-                        BOOKING_COLUMN_N_TICKETS+" INTEGER PRIMARY KEY, " +
+                        BOOKING_COLUMN_N_TICKETS+" INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         BOOKING_COLUMN_BOX_TICKETS+" INTEGER, "+
                         BOOKING_COLUMN_DATE+" DATE, "+
                         BOOKING_COLUMN_TIME+" DATETIME, "+
@@ -188,7 +188,10 @@ public class DB_Handler extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        String drop_admin_table = "DROP TABLE IF EXISTS "+ ADMIN_TABLE;
 
+        db.execSQL(drop_admin_table);
+        onCreate(db);
     }
 
     //Zaid function implementation123

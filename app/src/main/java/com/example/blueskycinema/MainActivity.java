@@ -3,6 +3,7 @@ package com.example.blueskycinema;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,10 +25,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_summery);
-
-        
+        setContentView(R.layout.activity_main);
 
     }
+
+    public void loadReserveActivity(View view){
+
+        setContentView(R.layout.activity_reserve_now);
+
+
+        Intent intent = new Intent(this, ReserveNowActivity.class);
+        startActivity(intent);
+    }
+
 
 }

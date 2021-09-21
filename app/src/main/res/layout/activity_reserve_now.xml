@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0F1B2B"
+    android:onClick="loadActivityTickets"
     tools:context=".Zaid.ReserveNowActivity">
 
 
@@ -14,26 +15,26 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView_showDate"
+            android:id="@+id/tv_showDate"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="92dp"
             android:text="@string/textView_showDate"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.708"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/ivCalender"
             android:layout_width="58dp"
             android:layout_height="46dp"
             android:layout_marginTop="80dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textView_showDate"
+            app:layout_constraintStart_toEndOf="@+id/tv_showDate"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_menu_my_calendar" />
 
@@ -44,6 +45,7 @@
             android:layout_marginBottom="40dp"
             android:background="@drawable/green_btn"
             android:fontFamily="sans-serif"
+            android:onClick="loadActivityTickets"
             android:text="@string/continue1"
             android:textAllCaps="false"
             android:textSize="24sp"
@@ -121,52 +123,52 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
+    <!--
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="300dp"
+            android:layout_height="157dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_movie">
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="300dp"
-        android:layout_height="157dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_movie">
+            <RadioButton
+                android:id="@+id/movie1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:text="@string/movie1"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
 
-        <RadioButton
-            android:id="@+id/movie1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:text="@string/movie1"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+            <RadioButton
+                android:id="@+id/movie2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:text="@string/movie2"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
 
-        <RadioButton
-            android:id="@+id/movie2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:text="@string/movie2"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
-
-        <RadioButton
-            android:id="@+id/movie3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dp"
-            android:text="@string/movie3"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
-    </RadioGroup>
-
+            <RadioButton
+                android:id="@+id/movie3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:text="@string/movie3"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </RadioGroup>
+    -->
     <TextView
         android:id="@+id/textView_movie2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="54dp"
         android:layout_marginLeft="54dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="250dp"
         android:layout_marginEnd="299dp"
         android:layout_marginRight="299dp"
         android:text="Choose a Date"
@@ -175,7 +177,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_movie" />
 
     <RadioGroup
         android:id="@+id/radioGroup2"
