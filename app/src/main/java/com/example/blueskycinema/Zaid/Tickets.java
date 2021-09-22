@@ -15,6 +15,11 @@ import com.example.blueskycinema.R;
 
 public class Tickets extends AppCompatActivity {
 
+    //No of seats in the theater
+    public static final int NO_OF_SEATS = 100;
+    public static final int NO_OF_BOX_SEATS = 105;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

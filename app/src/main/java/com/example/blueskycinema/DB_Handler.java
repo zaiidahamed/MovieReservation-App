@@ -14,10 +14,6 @@ public class DB_Handler extends SQLiteOpenHelper {
     //Database name
     public static final String DATABASE_NAME = "Movie.db";
 
-    //No of seats in the theater
-    public static final int NO_OF_SEATS = 200;
-    public static final int NO_OF_BOX_SEATS = 15;
-
     //Movie table
     public static final String MOVIE_TABLE = "movies_table";
     public static final String MOVIE_COLUMN_ID = "movieID";
@@ -182,7 +178,7 @@ public class DB_Handler extends SQLiteOpenHelper {
             Toast.makeText(context, "Table created successfully!", Toast.LENGTH_SHORT).show();
         }
         catch (Exception e){
-            Toast.makeText(context, "Table creation failed!:"+ e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Table creation failed!:", Toast.LENGTH_SHORT).show();
         }
     }
 

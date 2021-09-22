@@ -30,9 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadReserveActivity(View view){
-
         setContentView(R.layout.activity_reserve_now);
-
 
         Intent intent = new Intent(this, ReserveNowActivity.class);
         startActivity(intent);
