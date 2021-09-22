@@ -26,60 +26,43 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="1dp" />
 
-    <TextView
-        android:id="@+id/textView35"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/nowshowing_btn"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/acc_info3"
-        app:layout_constraintEnd_toStartOf="@+id/fav_btn2"
-        app:layout_constraintStart_toStartOf="@+id/acc_info3"
-        app:layout_constraintTop_toTopOf="@+id/acc_info3"
-        app:layout_constraintVertical_bias="0.571"
-        android:layout_marginLeft="16dp" />
 
-    <View
-        android:id="@+id/fav_btn2"
-        android:layout_width="141dp"
-        android:layout_height="38dp"
-        android:layout_marginEnd="8dp"
 
-        android:background="@drawable/changer"
-        android:backgroundTintMode="add"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/acc_info3"
-
-        app:layout_constraintEnd_toEndOf="@+id/acc_info3"
-        app:layout_constraintTop_toTopOf="@+id/acc_info3"
-        app:layout_constraintVertical_bias="1.0"
-        android:layout_marginRight="8dp" />
-
-    <TextView
-        android:id="@+id/textView36"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/review_pg_btn"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/fav_btn2"
-        app:layout_constraintEnd_toEndOf="@+id/fav_btn2"
-        app:layout_constraintStart_toStartOf="@+id/fav_btn2"
-        app:layout_constraintTop_toTopOf="@+id/fav_btn2" />
-
-    <View
-        android:id="@+id/acc_info3"
-        android:layout_width="290dp"
-        android:layout_height="40dp"
-
-        android:layout_marginTop="8dp"
-        android:background="@drawable/custom_btn"
-        android:backgroundTintMode="add"
-        android:visibility="visible"
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include4" />
+        app:layout_constraintTop_toBottomOf="@+id/include4">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rbLeft"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_button_left_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/movie_details_details"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rbRight"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/radio_button_right_selector"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:gravity="center"
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/movie_details_reviews"
+            android:textColor="@color/white" />
+    </RadioGroup>
 
     <View
         android:id="@+id/feedbackArea1"
@@ -216,7 +199,7 @@
         android:layout_width="242dp"
         android:layout_height="42dp"
         android:layout_marginLeft="2px"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:numStars="5"
         android:progressTint="@color/yellow"
         android:rating="5"
@@ -224,9 +207,9 @@
         android:scaleY=".5"
         android:stepSize="0.5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.751"
+        app:layout_constraintHorizontal_bias="0.66"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/acc_info3"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         app:layout_wrapBehaviorInParent="skipped"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -283,15 +266,15 @@
         android:id="@+id/avg_ratingtxt"
         android:layout_width="77dp"
         android:layout_height="51dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
         android:text="4.6/5"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/rating_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/rating_bar"
-        app:layout_constraintVertical_bias="0.0"
-        android:layout_marginLeft="80dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/writereview_btn"

@@ -1,5 +1,6 @@
 package com.example.blueskycinema;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -153,7 +154,7 @@ public class DB_Handler extends SQLiteOpenHelper {
         //create review table
         String create_reviews_table =
                 "CREATE TABLE "+REVIEWS_TABLE+" ( "+
-                        REVIEWS_COLUMN_ID+" INTEGER PRIMARY KEY, " +
+                        REVIEWS_COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         REVIEWS_COLUMN_USERID+" INTEGER, "+
                         REVIEWS_COLUMN_MESSAGE+" TEXT, "+
                         REVIEWS_COLUMN_DATE+" DATE)";
@@ -197,10 +198,10 @@ public class DB_Handler extends SQLiteOpenHelper {
             db.execSQL(create_theater_rating_table);
             db.execSQL(create_favorite_table);
 
-            Toast.makeText(context, "Table created successfully!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Table created successfully!", Toast.LENGTH_SHORT).show();
         }
         catch (Exception e){
-            Toast.makeText(context, "Table creation failed!:"+ e.getMessage(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Table creation failed!:"+ e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -215,6 +216,18 @@ public class DB_Handler extends SQLiteOpenHelper {
 
     //Imasha function implementation
 
+    public long addReview(String rev){
+    //gets the data repository in write mode
+        SQLiteDatabase myDB = getWritableDatabase();
+
+    //create a new map of values, where column names the keys
+        ContentValues values = new ContentValues();
+        values.put(REVIEWS_COLUMN_MESSAGE, rev);
+
+    //Insert the new raw, returning primary key value of the new raw
+        long newReview = myDB.insert(REVIEWS_TABLE, null, values);
+        return newReview;
+    }
 
 
 
