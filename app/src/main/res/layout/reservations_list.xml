@@ -4,53 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     android:background="#0F1B2B"
     tools:context=".Zaid.EditReservation">
 
-    <ImageView
-        android:id="@+id/arraow5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/ic_baseline_arrow_back_ios_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/myReservation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="My Reservation"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/recyclerView"
+        android:layout_height="match_parent" />
 
-    <View
-        android:id="@+id/divider7"
-        android:layout_width="411dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="52dp"
-        android:background="@color/toolbar_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-<!--
     <ImageView
-        android:id="@+id/moviePoster"
+        android:id="@+id/moviePoster1"
         android:layout_width="350dp"
         android:layout_height="200dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/m5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider7" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/view_summery"
@@ -59,10 +32,10 @@
         android:background="#2B3543"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/moviePoster" />
+        app:layout_constraintTop_toBottomOf="@+id/moviePoster1" />
 
     <TextView
-        android:id="@+id/movieName2"
+        android:id="@+id/movieName3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -72,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="@+id/view_summery"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/view_summery"
-        app:layout_constraintTop_toBottomOf="@+id/moviePoster" />
+        app:layout_constraintTop_toBottomOf="@+id/moviePoster1" />
 
     <TextView
         android:id="@+id/view_date"
@@ -85,7 +58,7 @@
         android:textColor="#8F8F8F"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/view_summery"
-        app:layout_constraintTop_toBottomOf="@+id/movieName2" />
+        app:layout_constraintTop_toBottomOf="@+id/movieName3" />
 
     <TextView
         android:id="@+id/view_time"
@@ -100,7 +73,7 @@
         app:layout_constraintEnd_toEndOf="@+id/view_summery" />
 
     <TextView
-        android:id="@+id/print_date1"
+        android:id="@+id/print_date2"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -127,7 +100,7 @@
         app:layout_constraintStart_toStartOf="@+id/view_summery" />
 
     <TextView
-        android:id="@+id/print_tot1"
+        android:id="@+id/print_tot2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -140,7 +113,7 @@
         app:layout_constraintEnd_toEndOf="@+id/view_summery" />
 
     <TextView
-        android:id="@+id/print_time1"
+        android:id="@+id/print_time2"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
@@ -148,27 +121,26 @@
         android:text="@string/print_time1"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/print_date1"
+        app:layout_constraintBaseline_toBaselineOf="@+id/print_date2"
         app:layout_constraintEnd_toEndOf="@+id/view_summery" />
 
     <Button
-        android:id="@+id/remove"
+        android:id="@+id/rv_remove"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:background="@drawable/green_btn"
         android:fontFamily="sans-serif"
-        android:onClick="deleteBooking"
         android:text="@string/remove"
         android:textAllCaps="false"
         android:textSize="20sp"
         app:backgroundTint="#E51937"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edit2"
+        app:layout_constraintBaseline_toBaselineOf="@+id/rv_edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.323"
-        app:layout_constraintStart_toEndOf="@+id/edit2" />
+        app:layout_constraintStart_toEndOf="@+id/rv_edit" />
 
     <Button
-        android:id="@+id/edit2"
+        android:id="@+id/rv_edit"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -176,13 +148,13 @@
         android:layout_marginTop="48dp"
         android:background="@drawable/green_btn"
         android:fontFamily="sans-serif"
-        android:onClick="loadChangeDateActivity"
         android:text="@string/edit2"
         android:textAllCaps="false"
         android:textSize="20sp"
         app:backgroundTint="#4CD964"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_summery" />
-    -->
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

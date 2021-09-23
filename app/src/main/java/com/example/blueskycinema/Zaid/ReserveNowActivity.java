@@ -20,8 +20,10 @@ import java.util.Calendar;
 
 public class ReserveNowActivity extends AppCompatActivity {
 
+    TextView tv_showDate;
     RadioGroup radioGroup2;
     RadioButton time1, time2, time3;
+    private String selectedType="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class ReserveNowActivity extends AppCompatActivity {
         //calendar implementation
 
         ImageView ivCalender = findViewById(R.id.ivCalender);
-        TextView tv_showDate = findViewById(R.id.tv_showDate);
+        tv_showDate = findViewById(R.id.tv_showDate);
 
 
         Calendar c = Calendar.getInstance();
@@ -54,37 +56,41 @@ public class ReserveNowActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-        //end of Calender
+
+        //Select movie time
+        radioGroup2 = findViewById(R.id.radioGroup2);
+        time1 = findViewById(R.id.time1);
+        time2 = findViewById(R.id.time2);
+        time3 = findViewById(R.id.time3);
+
+
+        time1.setSelected(true);
+        radioGroup2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(i==R.id.time1){
+                    selectedType = time1.getText().toString();
+                }else if(i==R.id.time2){
+                    selectedType = time2.getText().toString();
+                }else{
+                    selectedType = time3.getText().toString();
+                }
+            }
+        });
+
 
     }
-/*
-    public void onRadioButtonClicked(View view) {
-        String time = null;
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-        // Check which radio button was clicked
-        switch (view.getId()) {
-            case R.id.time1:
-                if (checked)
-                    time = "time1";
-                    break;
-            case R.id.time2:
-                if (checked)
-                    time = "time2";
-                    break;
-            case R.id.time3:
-                if (checked)
-                    time = "time3";
-                    break;
-        }
 
-    }
-*/
+
     //continue button
     public void loadActivityTickets(View v){
         setContentView(R.layout.activity_tickets);
         Intent intent = new Intent(this, Tickets.class);
 
+        String date = tv_showDate.getText().toString();
+        intent.putExtra("SELECTED_DATE", date);
+
+        intent.putExtra("SELECTED_TIME", selectedType);
 
         startActivity(intent);
     }

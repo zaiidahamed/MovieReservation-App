@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.blueskycinema.Zaid.EditReservation;
 import com.example.blueskycinema.Zaid.ReserveNowActivity;
 
 import java.util.Calendar;
@@ -33,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reserve_now);
 
         Intent intent = new Intent(this, ReserveNowActivity.class);
+        startActivity(intent);
+    }
+
+    public void loadReasevations(View view){
+        setContentView(R.layout.activity_edit_reservation);
+
+        Intent intent = new Intent(this, EditReservation.class);
         startActivity(intent);
     }
 
