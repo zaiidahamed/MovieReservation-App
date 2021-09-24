@@ -21,36 +21,38 @@ public class EditReservation extends AppCompatActivity {
     
 //    ImageView moviePoster1;
 //    TextView movieName3, print_date2, print_time2, print_tot2;
-    RecyclerView recyclerView;
+//    RecyclerView recyclerView;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_reservation);
 
-//        moviePoster1 = findViewById(R.id.moviePoster1);
-//        movieName3 = findViewById(R.id.movieName3);
-//        print_date2 = findViewById(R.id.print_date2);
-//        print_time2 = findViewById(R.id.print_time2);
-//        print_tot2 = findViewById(R.id.print_tot2);
-
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
-
-        DB_Handler db_handler = new DB_Handler(this);
-        List<bookingModel> bookingModels = db_handler.getBookingList();
-
-        if (bookingModels.size() > 0){
-            reservationListAdapter reservationListAdapter = new reservationListAdapter(bookingModels,EditReservation.this);
-            recyclerView.setAdapter(reservationListAdapter);
-        }else {
-            Toast.makeText(this, "There is no employee in the database", Toast.LENGTH_SHORT).show();
-        }
-        
-    }
-
-    //Edit details button
+////        moviePoster1 = findViewById(R.id.moviePoster1);
+////        movieName3 = findViewById(R.id.movieName3);
+////        print_date2 = findViewById(R.id.print_date2);
+////        print_time2 = findViewById(R.id.print_time2);
+////        print_tot2 = findViewById(R.id.print_tot2);
+//
+//        //recyclerView = findViewById(R.id.recyclerView);
+////        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+////        recyclerView.setHasFixedSize(true);
+////
+//        DB_Handler db_handler = new DB_Handler(this);
+//        List<bookingModel> bookingModels = db_handler.getBookingList();
+//
+//        if (bookingModels.size() > 0){
+//            reservationListAdapter myAdapter = new reservationListAdapter(bookingModels,EditReservation.this);
+//            recyclerView.setAdapter(myAdapter);
+//        }else {
+//            Toast.makeText(this, "There is no employee in the database", Toast.LENGTH_SHORT).show();
+//        }
+//
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//    }
+//
+//    //Edit details button
 //    public void loadChangeDateActivity(View v){
 //
 //        //Create intent for next activity
@@ -74,7 +76,7 @@ public class EditReservation extends AppCompatActivity {
 //
 //        startActivity(intent);
 //        Toast.makeText(this, "Booking Removed!", Toast.LENGTH_SHORT).show();
-//    }
+    }
 
 
 }

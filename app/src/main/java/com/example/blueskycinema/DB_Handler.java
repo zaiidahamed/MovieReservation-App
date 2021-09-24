@@ -61,7 +61,7 @@ public class DB_Handler extends SQLiteOpenHelper {
     public static final String BOOKING_COLUMN_DATE = "date";
     public static final String BOOKING_COLUMN_TIME = "time";
     public static final String BOOKING_COLUMN_AMOUNT = "amount";
-    public static final String BOOKING_COLUMN_MOVIE_ID = "movieID";
+    public static final String BOOKING_COLUMN_MOVIE_NAME = "movieName";
 
     //Discount table
     public static final String DISCOUNT_TABLE = "discount_table";
@@ -140,7 +140,7 @@ public class DB_Handler extends SQLiteOpenHelper {
                         BOOKING_COLUMN_DATE+" TEXT, "+
                         BOOKING_COLUMN_TIME+" TEXT, "+
                         BOOKING_COLUMN_AMOUNT+" TEXT, "+
-                        BOOKING_COLUMN_MOVIE_ID+" TEXT)";
+                        BOOKING_COLUMN_MOVIE_NAME+" TEXT)";
 
         //create discount table
         String create_discount_table =
@@ -219,7 +219,7 @@ public class DB_Handler extends SQLiteOpenHelper {
 
     //Zaid function implementation
 
-    public long addBooking(String noOfTckts, String noOfBoxTckts, String date, String time, String amount, String movieId){
+    public long addBooking(String noOfTckts, String noOfBoxTckts, String date, String time, String amount, String movieName){
         //gets the data repository in write mode
         SQLiteDatabase db = getWritableDatabase();
 
@@ -230,7 +230,7 @@ public class DB_Handler extends SQLiteOpenHelper {
         values.put(BOOKING_COLUMN_DATE, date);
         values.put(BOOKING_COLUMN_TIME, time);
         values.put(BOOKING_COLUMN_AMOUNT, amount);
-        values.put(BOOKING_COLUMN_MOVIE_ID, movieId);
+        values.put(BOOKING_COLUMN_MOVIE_NAME, movieName);
 
 
         //Insert the new raw, returning primary key value of the new raw
@@ -240,11 +240,94 @@ public class DB_Handler extends SQLiteOpenHelper {
     }
 
     //get all bookings
-    public List<bookingModel> getBookingList(){
-        String sql = "select * from " + BOOKING_TABLE;
-        SQLiteDatabase db = getWritableDatabase();
+//    public List getBookingList(String req){
+//
+//        SQLiteDatabase db = getReadableDatabase();
+//
+//        //define a projection that specifies which columns from the database
+//        String[] projection = {
+//                BOOKING_COLUMN_ID,
+//                BOOKING_COLUMN_DATE,
+//                BOOKING_COLUMN_TIME,
+//                BOOKING_COLUMN_AMOUNT,
+//                BOOKING_COLUMN_N_TICKETS,
+//                BOOKING_COLUMN_BOX_TICKETS,
+//                BOOKING_COLUMN_MOVIE_NAME
+//        };
+//        //filter results WHERE "userName" = 'Kamal'
+//        //String selection = UsersMaster.Users.COLUMN_NAME_USERNAME + " = ?";
+//        //String[] selectionArgs = {""};
+//
+//        Cursor cursor = db.query(
+//                BOOKING_TABLE,
+//                projection,
+//                null,
+//                null,
+//                null,
+//                null,
+//                null
+//        );
+//
+////        List idList = new ArrayList<>();
+//        List dateList = new ArrayList<>();
+//        List timeList = new ArrayList<>();
+//        List amountList = new ArrayList<>();
+//        List nTicketsList = new ArrayList<>();
+//        List boxTicketsList = new ArrayList<>();
+//        List movieNameList = new ArrayList<>();
+//
+//        while (cursor.moveToNext()){
+//            String id = cursor.getString( cursor.getColumnIndexOrThrow(BOOKING_COLUMN_ID));
+//            String date = cursor.getString( cursor.getColumnIndexOrThrow(BOOKING_COLUMN_DATE));
+//            String time = cursor.getString( cursor.getColumnIndexOrThrow(BOOKING_COLUMN_TIME));
+//            String amount = cursor.getString( cursor.getColumnIndexOrThrow(BOOKING_COLUMN_AMOUNT));
+//            String nTickets = cursor.getString( cursor.getColumnIndexOrThrow(BOOKING_COLUMN_N_TICKETS));
+//            String boxTickets = cursor.getString( cursor.getColumnIndexOrThrow(BOOKING_COLUMN_BOX_TICKETS));
+//            String mNames = cursor.getString( cursor.getColumnIndexOrThrow(BOOKING_COLUMN_MOVIE_NAME));
+//
+//            //idList.add(id);
+//            dateList.add(date);
+//            timeList.add(time);
+//            amountList.add(amount);
+//            nTicketsList.add(nTickets);
+//            boxTicketsList.add(boxTickets);
+//            movieNameList.add(mNames);
+//        }
+//        cursor.close();
+//
+////        Log.i(TAG, "readAllInfo" + userNames);
+//
+//        if(req == "DATE"){
+//            return dateList;
+//
+//        }else if(req == "TIME"){
+//            return timeList;
+//
+//        }else if(req == "AMOUNT"){
+//            return amountList;
+//
+//        }else if(req == "N_TICKETS"){
+//            return nTicketsList;
+//
+//        }else if(req == "BOX_TICKETS"){
+//            return boxTicketsList;
+//
+//        }else if(req == "MOVIES_NAMES"){
+//            return movieNameList;
+//
+//        }else{
+//            return null;
+//        }
+//
+//    }
 
-        List<bookingModel> storeBooking = new ArrayList<>();
+
+
+    public ArrayList<bookingModel> getBookingList(){
+        String sql = "select * from " + BOOKING_TABLE;
+        SQLiteDatabase db = getReadableDatabase();
+
+        ArrayList<bookingModel> storeBooking = new ArrayList<>();
         Cursor cursor = db.rawQuery(sql,null);
 
         if (cursor.moveToFirst()){
@@ -255,14 +338,15 @@ public class DB_Handler extends SQLiteOpenHelper {
                 String date = cursor.getString(3);
                 String time = cursor.getString(4);
                 String amount = cursor.getString(5);
-                String movieId = cursor.getString(6);
+                String movieName = cursor.getString(6);
 
-                storeBooking.add(new bookingModel(id,noOfTckts,noOfBoxTckts,date,time,amount));
+                storeBooking.add(new bookingModel(id,noOfTckts,noOfBoxTckts,date,time,amount, movieName));
             }while (cursor.moveToNext());
         }
         cursor.close();
         return storeBooking;
     }
+
 
     //delete booking
     public void deleteBooking(int id){

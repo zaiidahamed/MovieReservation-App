@@ -27,9 +27,9 @@ public class Summery extends AppCompatActivity {
         String total_amount = newIntent.getStringExtra("TOTAL_AMOUNT");
 
 
-        print_date1 = findViewById(R.id.print_date2);
-        print_time1 = findViewById(R.id.print_time2);
-        print_tot1 = findViewById(R.id.print_tot2);
+        print_date1 = findViewById(R.id.bl_date);
+        print_time1 = findViewById(R.id.bl_time);
+        print_tot1 = findViewById(R.id.bl_amount);
 
         print_date1.setText(selected_date);
         print_time1.setText(selected_time);

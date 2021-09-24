@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.blueskycinema.Zaid.EditReservation;
 import com.example.blueskycinema.Zaid.ReserveNowActivity;
+import com.example.blueskycinema.Zaid.displayBooking;
 
 import java.util.Calendar;
 
@@ -38,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadReasevations(View view){
-        setContentView(R.layout.activity_edit_reservation);
+        setContentView(R.layout.activity_display_booking);
 
-        Intent intent = new Intent(this, EditReservation.class);
+        Intent intent = new Intent(this, displayBooking.class);
         startActivity(intent);
     }
 

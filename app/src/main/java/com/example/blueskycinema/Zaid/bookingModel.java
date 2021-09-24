@@ -1,20 +1,22 @@
 package com.example.blueskycinema.Zaid;
 
 public class bookingModel {
-    Integer id;
-    String n_tickets;
-    String box_tickets;
-    String date;
-    String time;
-    String amount;
+    private int id;
+    private String n_tickets;
+    private String box_tickets;
+    private String date;
+    private String time;
+    private String amount;
+    private String movieName;
 
-    public bookingModel(Integer id, String n_tickets, String box_tickets, String date, String time, String amount) {
+    public bookingModel(int id, String n_tickets, String box_tickets, String date, String time, String amount, String movieName) {
         this.id = id;
         this.n_tickets = n_tickets;
         this.box_tickets = box_tickets;
         this.date = date;
         this.time = time;
         this.amount = amount;
+        this.movieName = movieName;
     }
 
     public Integer getId() {
@@ -59,6 +61,14 @@ public class bookingModel {
 
     public String getAmount() {
         return amount;
+    }
+
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
     }
 
     public void setAmount(String amount) {

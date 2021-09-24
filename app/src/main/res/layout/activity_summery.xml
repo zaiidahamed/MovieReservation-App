@@ -46,7 +46,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/moviePoster1"
+            android:id="@+id/bl_moviePoster"
             android:layout_width="350dp"
             android:layout_height="200dp"
             android:layout_marginTop="36dp"
@@ -63,10 +63,10 @@
             android:background="#2B3543"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/moviePoster1" />
+            app:layout_constraintTop_toBottomOf="@+id/bl_moviePoster" />
 
         <TextView
-            android:id="@+id/movieName3"
+            android:id="@+id/bl_movieName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
@@ -76,7 +76,7 @@
             app:layout_constraintEnd_toEndOf="@+id/view_summery"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="@+id/view_summery"
-            app:layout_constraintTop_toBottomOf="@+id/moviePoster1" />
+            app:layout_constraintTop_toBottomOf="@+id/bl_moviePoster" />
 
         <TextView
             android:id="@+id/view_date"
@@ -89,7 +89,7 @@
             android:textColor="#8F8F8F"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/view_summery"
-            app:layout_constraintTop_toBottomOf="@+id/movieName3" />
+            app:layout_constraintTop_toBottomOf="@+id/bl_movieName" />
 
         <TextView
             android:id="@+id/view_time"
@@ -104,7 +104,7 @@
             app:layout_constraintEnd_toEndOf="@+id/view_summery" />
 
         <TextView
-            android:id="@+id/print_date2"
+            android:id="@+id/bl_date"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -131,7 +131,7 @@
             app:layout_constraintStart_toStartOf="@+id/view_summery" />
 
         <TextView
-            android:id="@+id/print_tot2"
+            android:id="@+id/bl_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
@@ -144,7 +144,7 @@
             app:layout_constraintEnd_toEndOf="@+id/view_summery" />
 
         <TextView
-            android:id="@+id/print_time2"
+            android:id="@+id/bl_time"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
@@ -152,7 +152,7 @@
             android:text="@string/print_time"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/print_date2"
+            app:layout_constraintBaseline_toBaselineOf="@+id/bl_date"
             app:layout_constraintEnd_toEndOf="@+id/view_summery" />
 <!--
         <EditText

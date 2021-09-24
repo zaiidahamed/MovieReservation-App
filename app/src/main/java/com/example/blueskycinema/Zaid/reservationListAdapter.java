@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,21 +20,21 @@ import java.util.List;
 
 public class reservationListAdapter extends RecyclerView.Adapter<reservationListAdapter.ViewHolder> {
 
-    List<bookingModel> booking;
-    Context context;
-    DB_Handler db_handler;
+    private ArrayList<bookingModel> arrayList;
+    private Context context;
+    private DB_Handler db_handler;
 
-    public reservationListAdapter(List<bookingModel> booking, Context context) {
-        this.booking = booking;
+    public reservationListAdapter(Context context, ArrayList<bookingModel> arrayList) {
         this.context = context;
+        this.arrayList = arrayList;
         db_handler = new DB_Handler(context);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.reservations_list,parent,false);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.booking_item_list,null);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -43,31 +42,33 @@ public class reservationListAdapter extends RecyclerView.Adapter<reservationList
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        final bookingModel bookingModel = booking.get(position);
+        final bookingModel model = arrayList.get(position);
 
-        holder.movieName3.setText(bookingModel.getId());
-        holder.print_date2.setText(bookingModel.getDate());
-        holder.print_time2.setText(bookingModel.getTime());
-        holder.print_tot2.setText(bookingModel.getAmount());
+        int id = model.getId();
+        holder.bl_movieName.setText(model.getMovieName());
+        holder.bl_date.setText(model.getDate());
+        holder.bl_time.setText(model.getTime());
+        holder.bl_amount.setText(model.getAmount());
+        holder.bl_movieName.setText(model.getMovieName());
 
-        holder.rv_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                String stringName = holder.print_date2.getText().toString();
-//                String stringEmail = holder.print_time2.getText().toString();
+//        holder.bl_editBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                String stringName = holder.print_date2.getText().toString();
+////                String stringEmail = holder.print_time2.getText().toString();
 //
 //                DB_Handler.updateEmployee(new EmployeeModelClass(employeeModelClass.getId(),stringName,stringEmail));
 //                notifyDataSetChanged();
 //                ((Activity) context).finish();
 //                context.startActivity(((Activity) context).getIntent());
-            }
-        });
+//            }
+//        });
 
-        holder.rv_remove.setOnClickListener(new View.OnClickListener() {
+        holder.bl_removeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db_handler.deleteBooking(bookingModel.getId());
-                booking.remove(position);
+                db_handler.deleteBooking(model.getId());
+                arrayList.remove(position);
                 notifyDataSetChanged();
             }
         });
@@ -75,48 +76,25 @@ public class reservationListAdapter extends RecyclerView.Adapter<reservationList
 
     @Override
     public int getItemCount() {
-        return 0;
+        return arrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView moviePoster1;
-        TextView movieName3, print_date2, print_time2, print_tot2;
-        Button rv_edit, rv_remove;
+        ImageView bl_moviePoster;
+        TextView bl_movieName, bl_date, bl_time, bl_amount, bl_id;
+        Button bl_editBtn, bl_removeBtn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            moviePoster1 = itemView.findViewById(R.id.moviePoster1);
-            movieName3 = itemView.findViewById(R.id.movieName3);
-            print_date2 = itemView.findViewById(R.id.print_date2);
-            print_time2 = itemView.findViewById(R.id.print_time2);
-            print_tot2 = itemView.findViewById(R.id.print_tot2);
-            rv_edit = itemView.findViewById(R.id.rv_edit);
-            rv_remove = itemView.findViewById(R.id.rv_remove);
+            bl_moviePoster = itemView.findViewById(R.id.bl_moviePoster);
+            bl_movieName = itemView.findViewById(R.id.bl_movieName);
+            bl_date = itemView.findViewById(R.id.bl_date);
+            bl_time = itemView.findViewById(R.id.bl_time);
+            bl_amount = itemView.findViewById(R.id.bl_amount);
+            bl_editBtn = itemView.findViewById(R.id.bl_editBtn);
+            bl_removeBtn = itemView.findViewById(R.id.bl_removeBtn);
 
         }
     }
 }
-
-
-/*
-public class RecyclerViewAdapter extends RecyclerView.ViewHolder{
-
-        ImageView moviePoster1;
-        TextView movieName3, print_date2, print_time2, print_tot2;
-        Button rv_edit, rv_remove;
-
-        public RecyclerViewAdapter(@NonNull View v) {
-            super(v);
-
-            moviePoster1 = v.findViewById(R.id.moviePoster1);
-            movieName3 = v.findViewById(R.id.movieName3);
-            print_date2 = v.findViewById(R.id.print_date2);
-            print_time2 = v.findViewById(R.id.print_time2);
-            print_tot2 = v.findViewById(R.id.print_tot2);
-
-            rv_edit = v.findViewById(R.id.rv_edit);
-            rv_remove = v.findViewById(R.id.rv_remove);
-        }
-    }
- */
