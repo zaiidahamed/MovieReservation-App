@@ -7,7 +7,7 @@
     android:background="@color/background">
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/addDuration"
         android:layout_width="320dp"
         android:layout_height="47dp"
         android:layout_marginTop="28dp"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView50" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/addGenre"
         android:layout_width="320dp"
         android:layout_height="47dp"
         android:layout_marginTop="28dp"
@@ -101,7 +101,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/addDuration" />
 
     <TextView
         android:id="@+id/textView52"
@@ -138,6 +138,6 @@
         app:backgroundTint="#4CD964"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+        app:layout_constraintTop_toBottomOf="@+id/addGenre" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

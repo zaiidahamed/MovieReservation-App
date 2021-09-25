@@ -176,7 +176,7 @@
     <string name="add_movie_main_image">Upload Image</string>
     <string name="add_movie_cover_image">Upload Image</string>
     <string name="add_movie_upload_trailer" />
-    <string name="add_movie_next2">Next</string>
+    <string name="add_movie_next2">Submit</string>
     <string name="add_movie_starting_date">JUL 01 2021</string>
     <string name="add_movie_ending_date">SEP 01 2021</string>
     <string name="add_movie_submit">Submit</string>

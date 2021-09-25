@@ -1,11 +1,17 @@
 package com.example.blueskycinema;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import com.example.blueskycinema.Hasith.Model;
+
+import java.util.ArrayList;
 
 public class DB_Handler extends SQLiteOpenHelper {
 
@@ -26,8 +32,11 @@ public class DB_Handler extends SQLiteOpenHelper {
     public static final String MOVIE_COLUMN_DURATION = "duration";
     public static final String MOVIE_COLUMN_YEAR = "year";
     public static final String MOVIE_COLUMN_DESCRIPTION = "description";
+    public static final String MOVIE_COLUMN_CAST = "castTEXT";
     public static final String MOVIE_COLUMN_POSTER = "poster";
     public static final String MOVIE_COLUMN_COVER = "coverImage";
+    public static final String MOVIE_COLUMN_START_DATE = "start_date";
+    public static final String MOVIE_COLUMN_END_DATE = "end_date";
     public static final String MOVIE_COLUMN_TRAILER = "trailerLink";
     public static final String MOVIE_COLUMN_PRICE = "ticketPrice";
 
@@ -86,6 +95,7 @@ public class DB_Handler extends SQLiteOpenHelper {
 
 
     public DB_Handler(Context context) {
+
         super(context, DATABASE_NAME, null, 1);
     }
 
@@ -101,8 +111,11 @@ public class DB_Handler extends SQLiteOpenHelper {
                         MOVIE_COLUMN_DURATION+" TEXT, "+
                         MOVIE_COLUMN_YEAR+" INTEGER, "+
                         MOVIE_COLUMN_DESCRIPTION+" TEXT, "+
+                        MOVIE_COLUMN_CAST+" TEXT, "+
                         MOVIE_COLUMN_POSTER+" BLOB, "+
                         MOVIE_COLUMN_COVER+" BLOB, "+
+                        MOVIE_COLUMN_START_DATE+" TEXT, "+
+                        MOVIE_COLUMN_END_DATE+" TEXT, "+
                         MOVIE_COLUMN_TRAILER+" TEXT, "+
                         MOVIE_COLUMN_PRICE+" REAL)";
 
@@ -179,15 +192,15 @@ public class DB_Handler extends SQLiteOpenHelper {
             db.execSQL(create_rating_table);
             db.execSQL(create_favorite_table);
 
-            Toast.makeText(context, "Table created successfully!", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "Table created successfully!", Toast.LENGTH_SHORT).show();
         }
         catch (Exception e){
-            Toast.makeText(context, "Table creation failed!:"+ e.getMessage(), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "Table creation failed!:"+ e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase myDB, int oldVersion, int newVersion) {
 
     }
 
@@ -201,7 +214,66 @@ public class DB_Handler extends SQLiteOpenHelper {
 
 
     //Hasith function implementation
+    public long addMovie(String MovieName, String Duration, String Year, String Genre, String Description, String Cast, String Trailer, String StartDate, String EndDate, String Tickets){
+    //gets the data repository in write mode
+        SQLiteDatabase myDB = getWritableDatabase();
 
+
+
+    //create a new map of values, where column names the keys
+        ContentValues values = new ContentValues();
+        values.put(MOVIE_COLUMN_NAME, MovieName);
+        values.put(MOVIE_COLUMN_DURATION, Duration);
+        values.put(MOVIE_COLUMN_YEAR, Year);
+        values.put(MOVIE_COLUMN_GENRE, Genre);
+        values.put(MOVIE_COLUMN_DESCRIPTION, Description);
+
+        values.put(MOVIE_COLUMN_CAST, Cast);
+        values.put(MOVIE_COLUMN_TRAILER, Trailer);
+        values.put(MOVIE_COLUMN_START_DATE, StartDate);
+        values.put(MOVIE_COLUMN_END_DATE, EndDate);
+        values.put(MOVIE_COLUMN_PRICE, Tickets);
+
+
+
+    //Insert the new raw, returning primary key value of the new raw
+        long newMovieId = myDB.insert(MOVIE_TABLE, null, values);
+        return newMovieId;
+    }
+
+    //Retrieve Data
+    public ArrayList<Model> getAllData(String orderBy) {
+        ArrayList<Model> arrayList = new ArrayList<>();
+
+        //Select all info in database
+        String selectQuery = "SELECT * FROM " + MOVIE_TABLE + " ORDER BY " + orderBy;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        //Get the data from columns
+        if (cursor.moveToNext()) {
+            do {
+                Model model = new Model(
+                        ""+cursor.getInt(cursor.getColumnIndex(MOVIE_COLUMN_ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_NAME)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_DURATION)),
+                        ""+cursor.getInt(cursor.getColumnIndex(MOVIE_COLUMN_YEAR)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_GENRE)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_DESCRIPTION)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_CAST)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_TRAILER)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_START_DATE)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_END_DATE)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_PRICE))
+
+                );
+                arrayList.add(model);
+            } while (cursor.moveToNext());
+        }
+        db.close();
+        return arrayList;
+    }
 
 
 
