@@ -2,18 +2,11 @@ package com.example.blueskycinema.Zaid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.blueskycinema.R;
 
@@ -37,9 +30,9 @@ public class Tickets extends AppCompatActivity {
         editFullTckts = findViewById(R.id.editFullTckts);
         editBoxTckts = findViewById(R.id.editBoxTckts);
         totalTckts = findViewById(R.id.totalTckts);
-        amount1 = findViewById(R.id.amount1);
-        avSeats1 = findViewById(R.id.avSeats1);
-        avBox1 = findViewById(R.id.avBox1);
+        amount1 = findViewById(R.id.amount2);
+        avSeats1 = findViewById(R.id.avSeats2);
+        avBox1 = findViewById(R.id.avBox2);
 
     }
 
@@ -76,12 +69,16 @@ public class Tickets extends AppCompatActivity {
         String totalAmount = amount1.getText().toString();
         String fullTickets = editFullTckts.getText().toString();
         String boxTickets = editBoxTckts.getText().toString();
+//        String avFullSeats = avSeats1.getText().toString();
+//        String avBoxSeats = avBox1.getText().toString();
 
         intent.putExtra("SELECTED_DATE", selected_date);
         intent.putExtra("SELECTED_TIME", selected_time);
         intent.putExtra("TOTAL_AMOUNT", totalAmount);
         intent.putExtra("TOTAL_FULL_TICKETS", fullTickets);
         intent.putExtra("TOTAL_BOX_TICKETS", boxTickets);
+//        intent.putExtra("AVAILABLE_FULL_SEATS", avFullSeats);
+//        intent.putExtra("AVAILABLE_BOX_SEATS", avBoxSeats);
 
         startActivity(intent);
     }

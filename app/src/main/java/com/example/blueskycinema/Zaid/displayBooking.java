@@ -24,19 +24,7 @@ public class displayBooking extends AppCompatActivity {
 
         recyclerView1 = findViewById(R.id.recyclerView_new);
         databaseHelper = new DB_Handler(this);
-
         showRecord();
-
-//        recyclerView1.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView1.setHasFixedSize(true);
-
-//        if (bookingModels.size() > 0){
-//            reservationListAdapter myAdapter = new reservationListAdapter(bookingModels,displayBooking.this);
-//            recyclerView1.setAdapter(myAdapter);
-//        }else {
-//            Toast.makeText(this, "There is no employee in the database", Toast.LENGTH_SHORT).show();
-//        }
-
     }
 
     private void showRecord() {

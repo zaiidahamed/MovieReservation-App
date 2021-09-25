@@ -219,6 +219,7 @@ public class DB_Handler extends SQLiteOpenHelper {
 
     //Zaid function implementation
 
+    //add a booking to database
     public long addBooking(String noOfTckts, String noOfBoxTckts, String date, String time, String amount, String movieName){
         //gets the data repository in write mode
         SQLiteDatabase db = getWritableDatabase();
@@ -239,90 +240,8 @@ public class DB_Handler extends SQLiteOpenHelper {
 
     }
 
-    //get all bookings
-//    public List getBookingList(String req){
-//
-//        SQLiteDatabase db = getReadableDatabase();
-//
-//        //define a projection that specifies which columns from the database
-//        String[] projection = {
-//                BOOKING_COLUMN_ID,
-//                BOOKING_COLUMN_DATE,
-//                BOOKING_COLUMN_TIME,
-//                BOOKING_COLUMN_AMOUNT,
-//                BOOKING_COLUMN_N_TICKETS,
-//                BOOKING_COLUMN_BOX_TICKETS,
-//                BOOKING_COLUMN_MOVIE_NAME
-//        };
-//        //filter results WHERE "userName" = 'Kamal'
-//        //String selection = UsersMaster.Users.COLUMN_NAME_USERNAME + " = ?";
-//        //String[] selectionArgs = {""};
-//
-//        Cursor cursor = db.query(
-//                BOOKING_TABLE,
-//                projection,
-//                null,
-//                null,
-//                null,
-//                null,
-//                null
-//        );
-//
-////        List idList = new ArrayList<>();
-//        List dateList = new ArrayList<>();
-//        List timeList = new ArrayList<>();
-//        List amountList = new ArrayList<>();
-//        List nTicketsList = new ArrayList<>();
-//        List boxTicketsList = new ArrayList<>();
-//        List movieNameList = new ArrayList<>();
-//
-//        while (cursor.moveToNext()){
-//            String id = cursor.getString( cursor.getColumnIndexOrThrow(BOOKING_COLUMN_ID));
-//            String date = cursor.getString( cursor.getColumnIndexOrThrow(BOOKING_COLUMN_DATE));
-//            String time = cursor.getString( cursor.getColumnIndexOrThrow(BOOKING_COLUMN_TIME));
-//            String amount = cursor.getString( cursor.getColumnIndexOrThrow(BOOKING_COLUMN_AMOUNT));
-//            String nTickets = cursor.getString( cursor.getColumnIndexOrThrow(BOOKING_COLUMN_N_TICKETS));
-//            String boxTickets = cursor.getString( cursor.getColumnIndexOrThrow(BOOKING_COLUMN_BOX_TICKETS));
-//            String mNames = cursor.getString( cursor.getColumnIndexOrThrow(BOOKING_COLUMN_MOVIE_NAME));
-//
-//            //idList.add(id);
-//            dateList.add(date);
-//            timeList.add(time);
-//            amountList.add(amount);
-//            nTicketsList.add(nTickets);
-//            boxTicketsList.add(boxTickets);
-//            movieNameList.add(mNames);
-//        }
-//        cursor.close();
-//
-////        Log.i(TAG, "readAllInfo" + userNames);
-//
-//        if(req == "DATE"){
-//            return dateList;
-//
-//        }else if(req == "TIME"){
-//            return timeList;
-//
-//        }else if(req == "AMOUNT"){
-//            return amountList;
-//
-//        }else if(req == "N_TICKETS"){
-//            return nTicketsList;
-//
-//        }else if(req == "BOX_TICKETS"){
-//            return boxTicketsList;
-//
-//        }else if(req == "MOVIES_NAMES"){
-//            return movieNameList;
-//
-//        }else{
-//            return null;
-//        }
-//
-//    }
 
-
-
+    //retrieve bookings from database
     public ArrayList<bookingModel> getBookingList(){
         String sql = "select * from " + BOOKING_TABLE;
         SQLiteDatabase db = getReadableDatabase();
@@ -348,6 +267,38 @@ public class DB_Handler extends SQLiteOpenHelper {
     }
 
 
+    //get a single booking
+    public bookingModel getSingleBooking(int id){
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = db.query(BOOKING_TABLE, new String[]{
+                BOOKING_COLUMN_ID,
+                BOOKING_COLUMN_N_TICKETS,
+                BOOKING_COLUMN_BOX_TICKETS,
+                BOOKING_COLUMN_DATE,
+                BOOKING_COLUMN_TIME,
+                BOOKING_COLUMN_AMOUNT,
+                BOOKING_COLUMN_MOVIE_NAME,
+        },BOOKING_COLUMN_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
+
+        bookingModel bModel;
+        if (cursor != null){
+            cursor.moveToFirst();
+            bModel = new bookingModel(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getString(6)
+            );
+            return bModel;
+        }
+        return null;
+    }
+
+
     //delete booking
     public void deleteBooking(int id){
         SQLiteDatabase db = getWritableDatabase();
@@ -355,6 +306,27 @@ public class DB_Handler extends SQLiteOpenHelper {
                 {String.valueOf(id)});
     }
 
+
+    //update booking
+    public int updateBooking(bookingModel model) {
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        //create a new map of values, where column names the keys
+        ContentValues values = new ContentValues();
+
+        values.put(BOOKING_COLUMN_N_TICKETS, model.getN_tickets());
+        values.put(BOOKING_COLUMN_BOX_TICKETS, model.getBox_tickets());
+        values.put(BOOKING_COLUMN_DATE, model.getDate());
+        values.put(BOOKING_COLUMN_TIME, model.getTime());
+        values.put(BOOKING_COLUMN_AMOUNT, model.getAmount());
+        values.put(BOOKING_COLUMN_MOVIE_NAME, model.getMovieName());
+
+        int status = db.update(BOOKING_TABLE, values, BOOKING_COLUMN_ID +" =? ", new String[]{String.valueOf(model.getId())});
+
+        db.close();
+        return status;
+    }
 
 
 

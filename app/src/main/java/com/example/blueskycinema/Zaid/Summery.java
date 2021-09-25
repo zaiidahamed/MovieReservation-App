@@ -26,7 +26,6 @@ public class Summery extends AppCompatActivity {
         String selected_time = newIntent.getStringExtra("SELECTED_TIME");
         String total_amount = newIntent.getStringExtra("TOTAL_AMOUNT");
 
-
         print_date1 = findViewById(R.id.bl_date);
         print_time1 = findViewById(R.id.bl_time);
         print_tot1 = findViewById(R.id.bl_amount);
@@ -39,8 +38,13 @@ public class Summery extends AppCompatActivity {
 
     public void confirmButton(View view){
         Intent newIntent = getIntent();
+        //booked tickets
         String fullTicket = newIntent.getStringExtra("TOTAL_FULL_TICKETS");
         String boxTickets = newIntent.getStringExtra("TOTAL_BOX_TICKETS");
+
+        //avilable tickets
+//        String available_full_seats = newIntent.getStringExtra("AVAILABLE_FULL_SEATS");
+//        String available_box_seats = newIntent.getStringExtra("AVAILABLE_BOX_SEATS");
 
         DB_Handler db_handler = new DB_Handler(this);
 
@@ -58,8 +62,3 @@ public class Summery extends AppCompatActivity {
         }
     }
 }
-
-
-
-//            setContentView(R.layout.activity_reserve_now);
-//            Intent intent = new Intent(this, ReserveNowActivity.class);

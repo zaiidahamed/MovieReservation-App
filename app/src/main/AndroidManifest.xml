@@ -11,8 +11,6 @@
         android:theme="@style/Theme.BlueSkyCinema">
         <activity android:name=".Zaid.displayBooking"></activity>
         <activity android:name=".Zaid.changeDate" />
-        <activity android:name=".Zaid.EditReservation" />
-        <activity android:name=".Zaid.Confirmation" />
         <activity android:name=".Zaid.Summery" />
         <activity android:name=".Zaid.Tickets" />
         <activity android:name=".Zaid.ReserveNowActivity" />

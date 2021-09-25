@@ -33,8 +33,8 @@
     <string name="avBox1">11</string>
     <string name="editFullTckts1" />
     <string name="editBoxTckts2" />
-    <string name="totalTckts2">2</string>
-    <string name="amount1">Rs. 1300.00</string>
+    <string name="totalTckts2">0</string>
+    <string name="amount1">Rs. 0.00</string>
     <string name="updateBtn2">Update</string>
     <string name="movieName2">John Wick 3</string>
     <string name="print_date1">12-08-2021</string>

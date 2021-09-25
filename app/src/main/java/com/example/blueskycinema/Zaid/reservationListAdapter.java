@@ -2,17 +2,21 @@ package com.example.blueskycinema.Zaid;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blueskycinema.DB_Handler;
+import com.example.blueskycinema.MainActivity;
 import com.example.blueskycinema.R;
 
 import java.util.ArrayList;
@@ -49,27 +53,29 @@ public class reservationListAdapter extends RecyclerView.Adapter<reservationList
         holder.bl_date.setText(model.getDate());
         holder.bl_time.setText(model.getTime());
         holder.bl_amount.setText(model.getAmount());
-        holder.bl_movieName.setText(model.getMovieName());
 
-//        holder.bl_editBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                String stringName = holder.print_date2.getText().toString();
-////                String stringEmail = holder.print_time2.getText().toString();
-//
-//                DB_Handler.updateEmployee(new EmployeeModelClass(employeeModelClass.getId(),stringName,stringEmail));
-//                notifyDataSetChanged();
-//                ((Activity) context).finish();
-//                context.startActivity(((Activity) context).getIntent());
-//            }
-//        });
 
+        //update booking button
+        holder.bl_editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, changeDate.class);
+                intent.putExtra("ID", String.valueOf(model.getId()));
+                context.startActivity(intent);
+            }
+        });
+
+
+        //remove booking button
         holder.bl_removeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 db_handler.deleteBooking(model.getId());
                 arrayList.remove(position);
                 notifyDataSetChanged();
+
+                Toast.makeText(context, "Booking Deleted Successfully!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -94,7 +100,6 @@ public class reservationListAdapter extends RecyclerView.Adapter<reservationList
             bl_amount = itemView.findViewById(R.id.bl_amount);
             bl_editBtn = itemView.findViewById(R.id.bl_editBtn);
             bl_removeBtn = itemView.findViewById(R.id.bl_removeBtn);
-
         }
     }
 }
