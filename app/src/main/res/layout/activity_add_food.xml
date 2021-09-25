@@ -134,6 +134,7 @@
         android:layout_width="165dp"
         android:layout_height="52dp"
         android:layout_marginTop="72dp"
+        android:onClick="submitFood"
         android:text="@string/addFood_submitButton"
         app:backgroundTint="#4CD964"
         app:layout_constraintEnd_toEndOf="parent"
