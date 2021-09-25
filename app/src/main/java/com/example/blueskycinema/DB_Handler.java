@@ -1,5 +1,6 @@
 package com.example.blueskycinema;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -60,7 +61,6 @@ public class DB_Handler extends SQLiteOpenHelper {
     public static final String DISCOUNT_COLUMN_CODE = "couponCode";
     public static final String DISCOUNT_COLUMN_PERCENTAGE = "percentage";
 
-
     //Reviews table
     public static final String REVIEWS_TABLE = "reviews_table";
     public static final String REVIEWS_COLUMN_ID = "revID";
@@ -81,13 +81,28 @@ public class DB_Handler extends SQLiteOpenHelper {
     public static final String FAVORITE_COLUMN_USERID = "userID";
     public static final String FAVORITE_COLUMN_MOVIE_ID = "movieID";
 
-
     //Food table
     public static final String FOOD_TABLE = "food_table";
-    public static final String COLUMN_1 = "foodID";
-    public static final String COLUMN_2 = "name";
-    public static final String COLUMN_3 = "image";
-    public static final String COLUMN_4 = "price";
+    public static final String FOOD_COLUMN_ID = "foodID";
+    public static final String FOOD_COLUMN_NAME = "name";
+    public static final String FOOD_COLUMN_IMAGE = "image";
+    public static final String FOOD_COLUMN_PRICE = "price";
+
+    //Order table
+    public static final String ORDER_TABLE = "order_table";
+    public static final String ORDER_COLUMN_ID = "orderID";
+    public static final String ORDER_COLUMN_DATETIME = "date_time";
+    public static final String ORDER_COLUMN_SHEET_NO = "sheetNumber";
+    public static final String ORDER_COLUMN_TOTAL_ITEMS = "totalItems";
+    public static final String ORDER_COLUMN_AMOUNT = "amount";
+    public static final String ORDER_COLUMN_USERID = "userId";
+
+    //Order_Food table
+    public static final String ORDER_FOOD_TABLE = "order_food_table";
+    public static final String ORDER_FOOD_COLUMN_ID = "foodID";
+    public static final String ORDER_FOOD_COLUMN_PRODUCT_NAME = "productName";
+    public static final String ORDER_FOOD_COLUMN_QUANTITY = "quantity";
+
 
     public DB_Handler(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -173,17 +188,27 @@ public class DB_Handler extends SQLiteOpenHelper {
         //create food table
         String create_food_table =
                 "CREATE TABLE "+FOOD_TABLE+" ( "+
-                        COLUMN_1+" INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        COLUMN_2+" TEXT, "+
-                        COLUMN_3+" TEXT, "+
-                        COLUMN_4+" FLOAT)";
+                        FOOD_COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        FOOD_COLUMN_NAME+" TEXT, "+
+                        FOOD_COLUMN_IMAGE+" BLOB, "+
+                        FOOD_COLUMN_PRICE+" REAL)";
+
+        //create order table
+        String create_order_table =
+                "CREATE TABLE "+ORDER_TABLE+" ( "+
+                        ORDER_COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        ORDER_COLUMN_DATETIME+" DATETIME, "+
+                        ORDER_COLUMN_SHEET_NO+" TEXT, "+
+                        ORDER_COLUMN_TOTAL_ITEMS+" INTEGER, " +
+                        ORDER_COLUMN_AMOUNT+" REAL, "+
+                        ORDER_COLUMN_USERID+" INTEGER)";
+
+        //create order_food table
+
+
 
 
         //execute tables
-
-        db.execSQL(create_movies_table);
-        db.execSQL(create_users_table);
-        db.execSQL(create_food_table);
 
         try {
             db.execSQL(create_movies_table);
@@ -197,10 +222,13 @@ public class DB_Handler extends SQLiteOpenHelper {
             db.execSQL(create_rating_table);
             db.execSQL(create_favorite_table);
 
-            Toast.makeText(context, "Table created successfully!", Toast.LENGTH_SHORT).show();
+            db.execSQL(create_food_table);
+            db.execSQL(create_order_table);
+
+            //Toast.makeText(context, "Table created successfully!", Toast.LENGTH_SHORT).show();
         }
         catch (Exception e){
-            Toast.makeText(context, "Table creation failed!:"+ e.getMessage(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Table creation failed!:", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -225,8 +253,19 @@ public class DB_Handler extends SQLiteOpenHelper {
 
 
     //Janani function implementation
-    public boolean insertData(String name, String image, String marks) {
-        return true;
+
+    public long addFood(String foodName, String price){
+//gets the data repository in write mode
+        SQLiteDatabase myDB = getWritableDatabase();
+
+//create a new map of values, where column names the keys
+        ContentValues values = new ContentValues();
+        values.put(FOOD_COLUMN_NAME, foodName);
+        values.put(FOOD_COLUMN_PRICE, price);
+
+//Insert the new raw, returning primary key value of the new raw
+        long newFood = myDB.insert(FOOD_TABLE, null, values);
+        return newFood;
     }
 
 
