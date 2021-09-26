@@ -54,6 +54,7 @@ public class changeDate extends AppCompatActivity {
 
         String date = bModel.getDate();
         String time = bModel.getTime();
+        String movieName = bModel.getMovieName();
 
         //update button
         updateBtn2.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +65,7 @@ public class changeDate extends AppCompatActivity {
                 String fullTickets = editFullTckts2.getText().toString();
                 String boxTickets = editBoxTckts2.getText().toString();
 
-                bookingModel bModel = new bookingModel(Integer.parseInt(id), fullTickets, boxTickets, date, time, totalAmount, null);
+                bookingModel bModel = new bookingModel(Integer.parseInt(id), fullTickets, boxTickets, date, time, totalAmount, movieName);
                 int status = db_handler.updateBooking(bModel);
                 if (status == 1){
                     startActivity(new Intent(context, displayBooking.class));
@@ -73,7 +74,6 @@ public class changeDate extends AppCompatActivity {
                 else {
                     Toast.makeText(changeDate.this, "Booking Not Updated!", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
     }
