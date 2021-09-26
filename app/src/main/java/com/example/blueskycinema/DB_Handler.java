@@ -297,9 +297,7 @@ public class DB_Handler extends SQLiteOpenHelper {
         int status = myDB.update(MOVIE_TABLE, values, MOVIE_COLUMN_ID +" =? ", new String[]{String.valueOf(model.getMovieId())});
         myDB.close();
         return status;
-
     }
-
 
     //get a single movie info
     public Model getSingleMovie(int id){
