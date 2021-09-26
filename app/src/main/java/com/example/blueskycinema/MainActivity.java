@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startup (View view){
-        setContentView(R.layout.startup_page);
-        Intent intent = new Intent(this, startup.class);
+        setContentView(R.layout.main_view);
+        Intent intent = new Intent(this, displayMovies.class);
         startActivity(intent);
     }
 
