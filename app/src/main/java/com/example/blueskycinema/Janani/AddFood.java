@@ -1,6 +1,9 @@
 package com.example.blueskycinema.Janani;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -12,6 +15,7 @@ import com.example.blueskycinema.R;
 public class AddFood extends AppCompatActivity {
 
     EditText editTextTextPersonName3,editTextTextPersonName5;
+    Context context;
 
 
     @Override
@@ -21,6 +25,7 @@ public class AddFood extends AppCompatActivity {
 
         editTextTextPersonName3 = findViewById(R.id.editTextTextPersonName3);
         editTextTextPersonName5 = findViewById(R.id.editTextTextPersonName5);
+        context=this;
     }
 
     public void submitFood (View view) {
@@ -32,7 +37,13 @@ public class AddFood extends AppCompatActivity {
         }else{
             Toast.makeText(this, "Data not inserted!!!", Toast.LENGTH_SHORT).show();
         }
+
+        startActivity(new Intent(context, FoodList.class));
     }
+
+
+
+
 }
 
 
