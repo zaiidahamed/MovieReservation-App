@@ -25,7 +25,7 @@
         app:layout_constraintTop_toBottomOf="@+id/addDescription1" />
 
     <Button
-        android:id="@+id/button13"
+        android:id="@+id/buttonDelete"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginEnd="32dp"
@@ -57,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/johnwick" />
+        app:srcCompat="@drawable/blade" />
 
     <EditText
         android:id="@+id/addMovieName1"
