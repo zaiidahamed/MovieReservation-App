@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -155,6 +156,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
         ImageView profileIv;
         TextView MName, MDuration, MYear;
 //        ImageButton editButton;
+        Button buttonDelete;
 
         public Holder(@NonNull View itemView) {
             super(itemView);
@@ -164,6 +166,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
             MDuration = itemView.findViewById(R.id.MDuration);
             MYear = itemView.findViewById(R.id.MYear);
 //            editButton = itemView.findViewById(R.id.editBtn);
+            buttonDelete = itemView.findViewById(R.id.buttonDelete);
         }
     }
 
