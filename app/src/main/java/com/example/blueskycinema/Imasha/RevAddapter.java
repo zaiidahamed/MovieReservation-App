@@ -11,8 +11,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.NonNull;import androidx.recyclerview.widget.RecyclerView;
 import com.example.blueskycinema.DB_Handler;
 import com.example.blueskycinema.R;
 import java.util.ArrayList;
@@ -64,13 +63,18 @@ public class RevAddapter extends RecyclerView.Adapter<RevAddapter.Holder> {
                 public boolean onMenuItemClick(MenuItem menuItem) {
                     switch (menuItem.getItemId()){
                         case R.id.edit:
-                            Toast.makeText(context,"Edit clicked",Toast.LENGTH_SHORT).show();
+
+                            Reviews bModel = new Reviews(id, date, Float. toString(scount), review);
+                            int status = db_handler.updateReview(bModel);
+                            if (status == 1){
+                                context.startActivity(new Intent(context,GetReviews.class));
+                                Toast.makeText(context, "Booking Updated Successfully!", Toast.LENGTH_SHORT).show();
+                            }
                             break;
                         case R.id.delete:
                             Toast.makeText(context,"Successfully Deleted",Toast.LENGTH_SHORT).show();
                             db_handler.deleteReview(id);
                             context.startActivity(new Intent(context,GetReviews.class));
-
                             break;
                     }
                     return true;

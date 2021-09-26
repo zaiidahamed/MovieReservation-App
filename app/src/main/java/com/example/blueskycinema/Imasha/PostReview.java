@@ -50,8 +50,6 @@ public class PostReview extends AppCompatActivity {
 
     public void cancel_btn (View view){
         setContentView(R.layout.reviews);
-//        Intent intent = new Intent(this, TheaterRev.class);
-//        startActivity(intent);
     }
 
 }

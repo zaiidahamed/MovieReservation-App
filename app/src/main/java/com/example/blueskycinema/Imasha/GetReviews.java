@@ -1,20 +1,16 @@
 package com.example.blueskycinema.Imasha;
-import android.content.Context;
 import android.os.Bundle;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blueskycinema.DB_Handler;
 import com.example.blueskycinema.R;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class GetReviews extends AppCompatActivity {
 
@@ -49,8 +45,6 @@ public class GetReviews extends AppCompatActivity {
         databaseHelper = new DB_Handler(this);
 
         showRecord();
-
-
 
     }
     private void showRecord() {

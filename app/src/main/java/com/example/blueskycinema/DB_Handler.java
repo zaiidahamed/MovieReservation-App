@@ -294,6 +294,25 @@ public class DB_Handler extends SQLiteOpenHelper {
         db.close();
     }
 
+    //update review
+    public int updateReview(Reviews model) {
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        //create a new map of values, where column names the keys
+        ContentValues values = new ContentValues();
+
+        values.put(REVIEWS_COLUMN_ID, model.getId());
+        values.put(REVIEWS_COLUMN_SCOUNT, model.getScount());
+        values.put(REVIEWS_COLUMN_DATE, model.getDate());
+        values.put(REVIEWS_COLUMN_MESSAGE, model.getReview());
+
+
+        int status = db.update(REVIEWS_TABLE, values, REVIEWS_COLUMN_ID +" =? ", new String[]{String.valueOf(model.getId())});
+
+        db.close();
+        return status;
+    }
     //**********************************************************************************************
     //Hasith function implementation
 
