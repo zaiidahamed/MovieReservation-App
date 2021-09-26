@@ -179,13 +179,13 @@
         android:id="@+id/theater_ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:progressTint="#FFC107"
         android:rating="5"
         android:scaleX=".5"
         android:scaleY=".5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView50"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -194,34 +194,36 @@
         android:id="@+id/view"
         android:layout_width="335dp"
         android:layout_height="153dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:background="#22B3A6A6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/theater_ratingBar" />
 
     <Button
-        android:id="@+id/feednack_btn"
+        android:id="@+id/feedback_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/light_green"
+        android:onClick="submitTheaterRev"
         android:text="Post"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/textView51" />
+        app:layout_constraintTop_toBottomOf="@+id/theaterRev" />
 
-    <TextView
-        android:id="@+id/textView51"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/theaterRev"
+        android:layout_width="299dp"
+        android:layout_height="48dp"
         android:layout_marginTop="12dp"
-        android:text="Enter your feedback here..."
-        android:textColor="@color/grey"
-        android:textSize="12sp"
+        android:ems="10"
+        android:hint="Give your feedback"
+        android:inputType="textPersonName"
+        android:textColor="#A8A4A4"
+        android:textColorHint="#B8B8B8"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view" />
 

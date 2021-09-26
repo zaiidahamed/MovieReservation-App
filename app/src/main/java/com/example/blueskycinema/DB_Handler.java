@@ -2,11 +2,14 @@ package com.example.blueskycinema;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
+import com.example.blueskycinema.Imasha.Reviews;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DB_Handler extends SQLiteOpenHelper {
 
@@ -68,15 +71,11 @@ public class DB_Handler extends SQLiteOpenHelper {
     public static final String REVIEWS_TABLE = "reviews_table";
     public static final String REVIEWS_COLUMN_ID = "revID";
     public static final String REVIEWS_COLUMN_USERID = "userID";
+    public static final String REVIEWS_COLUMN_SCOUNT = "count";
     public static final String REVIEWS_COLUMN_MESSAGE = "message";
     public static final String REVIEWS_COLUMN_DATE = "date";
 
-    //Rating table
-    public static final String RATING_TABLE = "rating_table";
-    public static final String RATING_COLUMN_ID = "ratingID";
-    public static final String RATING_COLUMN_USERID = "userID";
-    public static final String RATING_COLUMN_COUNT = "count";
-    public static final String RATING_COLUMN_DATE = "date";
+
 
     //Theater Rating table
     public static final String THEATER_RATING_TABLE = "theater_rating_table";
@@ -156,21 +155,15 @@ public class DB_Handler extends SQLiteOpenHelper {
                 "CREATE TABLE "+REVIEWS_TABLE+" ( "+
                         REVIEWS_COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         REVIEWS_COLUMN_USERID+" INTEGER, "+
+                        REVIEWS_COLUMN_SCOUNT+" TEXT, "+
                         REVIEWS_COLUMN_MESSAGE+" TEXT, "+
                         REVIEWS_COLUMN_DATE+" DATE)";
 
-        //create rating table
-        String create_rating_table =
-                "CREATE TABLE "+RATING_TABLE+" ( "+
-                        RATING_COLUMN_ID+" INTEGER PRIMARY KEY, " +
-                        RATING_COLUMN_USERID+" INTEGER, "+
-                        RATING_COLUMN_COUNT+" INTEGER, "+
-                        RATING_COLUMN_DATE+" DATE)";
 
         //create theater rating table
         String create_theater_rating_table =
                 "CREATE TABLE "+THEATER_RATING_TABLE+" ( "+
-                        THEATER_RATING_COLUMN_ID+" INTEGER PRIMARY KEY, " +
+                        THEATER_RATING_COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         THEATER_RATING_COLUMN_USERID+" INTEGER, "+
                         THEATER_RATING_COLUMN_COUNT+" INTEGER, "+
                         THEATER_RATING_COLUMN_MESSAGE+" TEXT,"+
@@ -194,7 +187,6 @@ public class DB_Handler extends SQLiteOpenHelper {
             db.execSQL(create_discount_table);
 
             db.execSQL(create_reviews_table);
-            db.execSQL(create_rating_table);
             db.execSQL(create_theater_rating_table);
             db.execSQL(create_favorite_table);
 
@@ -213,24 +205,96 @@ public class DB_Handler extends SQLiteOpenHelper {
     //Zaid function implementation123
 
 
-
+    //**********************************************************************************************
     //Imasha function implementation
 
-    public long addReview(String rev){
+    //add review
+    public long addReview(String rev, String date, String rt){
     //gets the data repository in write mode
         SQLiteDatabase myDB = getWritableDatabase();
 
-    //create a new map of values, where column names the keys
+        //create a new map of values, where column names the keys
         ContentValues values = new ContentValues();
         values.put(REVIEWS_COLUMN_MESSAGE, rev);
+        values.put(REVIEWS_COLUMN_DATE, date);
+        values.put(REVIEWS_COLUMN_SCOUNT, rt);
 
-    //Insert the new raw, returning primary key value of the new raw
+        //Insert the new raw, returning primary key value of the new raw
         long newReview = myDB.insert(REVIEWS_TABLE, null, values);
         return newReview;
     }
 
+    //add theater review
+    public long addTheterRev(String trev, String rt, String date){
+        //gets the data repository in write mode
+        SQLiteDatabase myDB = getWritableDatabase();
 
+        //create a new map of values, where column names the keys
+        ContentValues values = new ContentValues();
+        values.put(THEATER_RATING_COLUMN_MESSAGE, trev);
+        values.put(THEATER_RATING_COLUMN_COUNT, rt);
+        values.put(THEATER_RATING_COLUMN_DATE, date);
 
+        //Insert the new raw, returning primary key value of the new raw
+        long newTReview = myDB.insert(THEATER_RATING_TABLE, null, values);
+        return newTReview;
+    }
+
+    //get reviews count
+    public int countReviews(){
+        SQLiteDatabase myDB = getReadableDatabase();
+        String query = "SELECT * FROM "+ REVIEWS_TABLE;
+
+        Cursor cursor = myDB.rawQuery(query,null);
+        return cursor.getCount();
+    }
+
+    //get total rating value
+    public float countRating() {
+        SQLiteDatabase myDB = getReadableDatabase();
+        Cursor cursor = myDB.rawQuery("SELECT SUM(" + REVIEWS_COLUMN_SCOUNT + ") as Total FROM " + REVIEWS_TABLE, null);
+
+        float total = 0;
+        if (cursor.moveToFirst()) {
+
+            total = cursor.getInt(cursor.getColumnIndex("Total"));// get final total
+        }
+        return total;
+       
+    }
+    //get all reviews
+    public ArrayList<Reviews> getAllReviews(String orderBy) {
+        ArrayList<Reviews> arrayList = new ArrayList<>();
+        //Select all info in database
+        String selectQuery = "SELECT * FROM " + REVIEWS_TABLE + " ORDER BY " + orderBy;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        //Get the data from columns
+        if (cursor.moveToNext()) {
+            do {
+                Reviews model = new Reviews(
+                        ""+cursor.getInt(cursor.getColumnIndex(REVIEWS_COLUMN_ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(REVIEWS_COLUMN_MESSAGE)),
+                        ""+cursor.getString(cursor.getColumnIndex(REVIEWS_COLUMN_DATE)),
+                        ""+cursor.getString(cursor.getColumnIndex(REVIEWS_COLUMN_SCOUNT))
+
+                );
+                arrayList.add(model);
+            } while (cursor.moveToNext());
+        }
+        db.close();
+        return arrayList;
+    }
+
+    //delete a review
+
+    public void deleteReview(String id){
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(REVIEWS_TABLE,"revID =?",new String[]{String.valueOf(id)});
+        db.close();
+    }
+
+    //**********************************************************************************************
     //Hasith function implementation
 
 

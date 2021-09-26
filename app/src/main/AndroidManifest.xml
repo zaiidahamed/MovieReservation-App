@@ -16,6 +16,8 @@
         <activity android:name=".Zaid.Tickets" />
         <activity android:name=".Zaid.ReserveNowActivity" />
         <activity android:name=".Imasha.PostReview" />
+        <activity android:name=".Imasha.TheaterRev"/>
+        <activity android:name=".Imasha.GetReviews"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
