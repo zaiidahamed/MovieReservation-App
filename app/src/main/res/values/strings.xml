@@ -1,6 +1,6 @@
 <resources>
 
-<!--    Zaid-Strings-->
+    <!--    Zaid-Strings-->
     <string name="app_name">BlueSky Cinema</string>
     <string name="avSeat">26</string>
     <string name="textView_showDate" />
@@ -46,7 +46,7 @@
     <string name="remove">Remove</string>
 
 
-<!--    Janani-Strings-->
+    <!--    Janani-Strings-->
     <string name="main_add_button1">+Add</string>
     <string name="main_add_button2">+Add</string>
     <string name="main_add_button3">+Add</string>
@@ -97,10 +97,12 @@
     <string name="addFood_foodName">Enter Food Name</string>
     <string name="addFood_uploadImageButton">Upload Image</string>
     <string name="addFood_price">Enter Price</string>
-    <string name="addFood_submitButton">Submit</string>/>
+    <string name="addFood_submitButton">Submit</string>
+    <string name="FoodList">Food List</string>
+    <string name="updateFood">Update Food</string>/>
 
 
-<!--    Imasha-Strings-->
+    <!--    Imasha-Strings-->
     <string name="userName">Imasha Kuruppu</string>
     <string name="userEmail">imashakuruppu25@gmail.com</string>
     <string name="userPhone">076 900 7598</string>
@@ -138,7 +140,7 @@
     <string name="theater_feedback">Enter your feedback here....</string>
 
 
-<!--    Hasith-Strings-->
+    <!--    Hasith-Strings-->
     <string name="ongoing_movies_btn">10</string>
     <string name="total_booking_btn">125</string>
     <string name="total_ratings_btn">21</string>
@@ -176,7 +178,7 @@
     <string name="add_movie_genre" />
     <string name="add_movie_description" />
     <string name="add_movie_next">Next</string>
-    <string name="add_movie_cast"/>
+    <string name="add_movie_cast" />
     <string name="add_movie_main_image">Upload Image</string>
     <string name="add_movie_cover_image">Upload Image</string>
     <string name="add_movie_upload_trailer" />
@@ -198,4 +200,5 @@
     <string name="menu_reports">Reports</string>
     <string name="menu_theater_rating">Theater Rating</string>
     <string name="menu_logout">Logout</string>
+
 </resources>
