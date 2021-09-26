@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.blueskycinema.Hasith.add_movies;
 import com.example.blueskycinema.Janani.AddFood;
+import com.example.blueskycinema.Janani.FoodList;
 import com.example.blueskycinema.Zaid.ReserveNowActivity;
 
 import java.util.Calendar;
@@ -32,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
         
 
     }
-    public void loadAddFood (View view){
-        setContentView(R.layout.activity_add_food);
-        Intent intent = new Intent(this, AddFood.class);
+    public void loadFoodList (View view){
+        setContentView(R.layout.activity_food_list);
+        Intent intent = new Intent(this, FoodList.class);
         startActivity(intent);
     }
 
