@@ -9,24 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BlueSkyCinema">
-
-<!--        Zaid-->
-        <activity android:name=".Zaid.changeDate"/>
+        <activity android:name=".Janani.FoodList"></activity>
+        <activity android:name=".Janani.EditFood" /> <!-- Zaid -->
+        <activity android:name=".Zaid.changeDate" />
         <activity android:name=".Zaid.EditReservation" />
         <activity android:name=".Zaid.Confirmation" />
         <activity android:name=".Zaid.Summery" />
         <activity android:name=".Zaid.Tickets" />
-        <activity android:name=".Zaid.ReserveNowActivity" />
-
-<!--        Janani-->
-        <activity android:name=".Janani.AddFood"/>
-        <activity android:name=".Janani.FoodMain"/>
-        <activity android:name=".Janani.SelectFood"/>
-        <activity android:name=".Janani.MyCart"/>
-        <activity android:name=".Janani.Notifications"/>
-        <activity android:name=".Janani.ViewOrder"/>
-        <activity android:name=".Janani.ViewPayment"/>
-
+        <activity android:name=".Zaid.ReserveNowActivity" /> <!-- Janani -->
+        <activity android:name=".Janani.AddFood" />
+        <activity android:name=".Janani.FoodMain" />
+        <activity android:name=".Janani.SelectFood" />
+        <activity android:name=".Janani.MyCart" />
+        <activity android:name=".Janani.Notifications" />
+        <activity android:name=".Janani.ViewOrder" />
+        <activity android:name=".Janani.ViewPayment" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
