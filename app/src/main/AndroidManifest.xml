@@ -26,6 +26,7 @@
         <activity android:name=".Hasith.add_movies_2" />
         <activity android:name=".Hasith.displayMovies" />
         <activity android:name=".Hasith.startup" />
+        <activity android:name=".Hasith.EditMovie" />
 
         <activity android:name=".MainActivity">
             <intent-filter>

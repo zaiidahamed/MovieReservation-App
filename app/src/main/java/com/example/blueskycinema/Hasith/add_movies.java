@@ -27,6 +27,9 @@ public class add_movies extends AppCompatActivity {
         addGenre = findViewById(R.id.addGenre);
         addDescription = findViewById(R.id.addDescription);
 
+
+
+
     }
 
     //Intent

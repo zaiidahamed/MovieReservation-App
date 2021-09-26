@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -34,6 +35,7 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
 
 
+//    private int KeyCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,5 +63,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if(KeyCode == event.KEYCODE_BACK) {
+//            moveTaskToBack(true);
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 }

@@ -214,6 +214,8 @@ public class DB_Handler extends SQLiteOpenHelper {
 
 
     //Hasith function implementation
+
+    //Insert Data
     public long addMovie(String MovieName, String Duration, String Year, String Genre, String Description, String Cast, String Trailer, String StartDate, String EndDate, String Tickets){
     //gets the data repository in write mode
         SQLiteDatabase myDB = getWritableDatabase();
@@ -273,6 +275,81 @@ public class DB_Handler extends SQLiteOpenHelper {
         }
         db.close();
         return arrayList;
+    }
+
+    //Update Data
+    public int updateInfo(Model model){
+        //gets the data repository in write mode
+        SQLiteDatabase myDB = getWritableDatabase();
+
+
+
+        //create a new map of values, where column names the keys
+        ContentValues values = new ContentValues();
+
+        values.put(MOVIE_COLUMN_NAME, model.getMovieName());
+        values.put(MOVIE_COLUMN_DURATION, model.getDuration());
+        values.put(MOVIE_COLUMN_YEAR, model.getYear());
+        values.put(MOVIE_COLUMN_GENRE, model.getGenre());
+        values.put(MOVIE_COLUMN_DESCRIPTION, model.getDescription());
+
+        //Update the new raw, returning primary key value of the new raw
+        int status = myDB.update(MOVIE_TABLE, values, MOVIE_COLUMN_ID +" =? ", new String[]{String.valueOf(model.getMovieId())});
+        myDB.close();
+        return status;
+
+    }
+
+
+    //get a single movie info
+    public Model getSingleMovie(int id){
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(MOVIE_TABLE, new String[]{
+                MOVIE_COLUMN_ID,
+                MOVIE_COLUMN_NAME,
+                MOVIE_COLUMN_GENRE,
+                MOVIE_COLUMN_DURATION,
+                MOVIE_COLUMN_YEAR,
+                MOVIE_COLUMN_DESCRIPTION,
+                MOVIE_COLUMN_CAST,
+                MOVIE_COLUMN_POSTER,
+                MOVIE_COLUMN_COVER,
+                MOVIE_COLUMN_START_DATE,
+                MOVIE_COLUMN_END_DATE,
+                MOVIE_COLUMN_TRAILER,
+                MOVIE_COLUMN_PRICE,
+
+
+        },MOVIE_COLUMN_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
+        Model MModel;
+        if (cursor != null){
+            cursor.moveToFirst();
+            MModel = new Model(
+                    cursor.getString(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getString(6),
+                    cursor.getString(7),
+                    cursor.getString(8),
+                    cursor.getString(9),
+                    cursor.getString(10)
+            );
+            return MModel;
+        }
+        return null;
+    }
+
+
+
+    //Delete a movie
+    public void deleteInfo (String id) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(MOVIE_TABLE, MOVIE_COLUMN_ID + " = ? ", new String[]{id});
+        db.close();
     }
 
 
