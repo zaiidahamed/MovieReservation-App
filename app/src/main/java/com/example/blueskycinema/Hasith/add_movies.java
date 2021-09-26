@@ -26,10 +26,6 @@ public class add_movies extends AppCompatActivity {
         addYear = findViewById(R.id.addYear);
         addGenre = findViewById(R.id.addGenre);
         addDescription = findViewById(R.id.addDescription);
-
-
-
-
     }
 
     //Intent
@@ -50,17 +46,5 @@ public class add_movies extends AppCompatActivity {
 
         startActivity(intent);
     }
-//     public void Submit(View view){
-//
-//         DB_Handler DB = new DB_Handler(this);
-//         long info = DB.addMovie(addMovieName.getText().toString(), addDuration.getText().toString(), addYear.getText().toString(),addGenre.getText().toString(),addDescription.getText().toString());
-//
-//         if( info > 0 ){
-//             Toast.makeText(this, "Successfully Added!", Toast.LENGTH_SHORT).show();
-//         } else {
-//             Toast.makeText(this, "UnSuccessful", Toast.LENGTH_SHORT).show();
-//         }
-//
-//
-//    }
+
 }

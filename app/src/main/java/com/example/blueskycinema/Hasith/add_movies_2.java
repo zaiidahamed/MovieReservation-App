@@ -26,19 +26,18 @@ import java.util.Calendar;
 
 public class add_movies_2 extends AppCompatActivity {
     EditText addMovieCast,addTrailerLink,addTicketPrice;
-//    Button ImageAdd;
-//
-//    private static final int CAMERA_REQUEST_CODE = 100;
-//    private static final int STORAGE_REQUEST_CODE = 101;
-//
-//    private static final int IMAGE_PICK_CAMERA_CODE = 102;
-//    private static final int IMAGE_PICK_GALLERY_CODE = 102;
-//
-//    private String[] cameraPermissions;
-//    private String[] storagePermissions;
-//
-//    private Uri imageUri;
+    Button ImageAdd;
 
+    private static final int CAMERA_REQUEST_CODE = 100;
+    private static final int STORAGE_REQUEST_CODE = 101;
+
+    private static final int IMAGE_PICK_CAMERA_CODE = 102;
+    private static final int IMAGE_PICK_GALLERY_CODE = 102;
+
+    private String[] cameraPermissions;
+    private String[] storagePermissions;
+
+    private Uri imageUri;
 
     String takeMovieName;
     String takeDuration;
@@ -47,7 +46,7 @@ public class add_movies_2 extends AppCompatActivity {
     String takeDescription;
 
      DatePickerDialog datePickerDialog;
-    DatePickerDialog datePickerDialog1;
+     DatePickerDialog datePickerDialog1;
      Button dateButton;
      Button dateButton2;
 
@@ -61,12 +60,12 @@ public class add_movies_2 extends AppCompatActivity {
         addTrailerLink = findViewById(R.id.addTrailerLink);
         addTicketPrice = findViewById(R.id.addTicketPrice);
 
-//        ImageAdd = findViewById(R.id.buttonUploadImage);
-//
-//        //Permissions
-//        cameraPermissions = new String[] {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-//        storagePermissions = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-//
+        ImageAdd = findViewById(R.id.buttonUploadImage);
+
+        //Permissions
+        cameraPermissions = new String[] {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        storagePermissions = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
 //        //Image Upload Method
 //        ImageAdd.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -74,8 +73,6 @@ public class add_movies_2 extends AppCompatActivity {
 //                imagePickDialog();
 //            }
 //        });
-
-
 
         //Intent
         Intent intent = getIntent();
@@ -95,13 +92,8 @@ public class add_movies_2 extends AppCompatActivity {
         dateButton2.setText(getTodaysDate());
 
 
-//        String takeMovieName = intent.getStringExtra("mName");
-//        String takeDuration = intent.getStringExtra("mDuration");
-//        String takeYear = intent.getStringExtra("mYear");
-//        String takeGenre = intent.getStringExtra("mGenre");
-//        String takeDescription = intent.getStringExtra("mDescription");
-
     }
+
 
 //    private void imagePickDialog() {
 //
