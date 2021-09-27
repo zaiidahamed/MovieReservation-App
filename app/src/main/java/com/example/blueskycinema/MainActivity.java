@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.blueskycinema.Hasith.Adapter;
+import com.example.blueskycinema.Hasith.Login;
 import com.example.blueskycinema.Hasith.UserHome;
 import com.example.blueskycinema.Hasith.add_movies;
 import com.example.blueskycinema.Hasith.add_movies_2;
@@ -50,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startup (View view){
-        setContentView(R.layout.activity_user_home);
-        Intent intent = new Intent(this, UserHome.class);
+        setContentView(R.layout.login);
+        Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
 
