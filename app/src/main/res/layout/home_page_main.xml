@@ -136,7 +136,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.214"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rating_bar_texarea" />
+        app:layout_constraintTop_toBottomOf="@+id/singleRt" />
 
     <TextView
         android:id="@+id/textView50"
@@ -189,7 +189,7 @@
 
     <RatingBar
 
-        android:id="@+id/rating_bar_texarea"
+        android:id="@+id/singleRt"
         android:layout_width="240dp"
         android:layout_height="40dp"
 
@@ -219,7 +219,7 @@
         android:scaleX=".35"
         android:scaleY=".35"
         android:stepSize="0.5"
-        app:layout_constraintStart_toStartOf="@+id/rating_bar_texarea"
+        app:layout_constraintStart_toStartOf="@+id/singleRt"
         app:layout_constraintTop_toBottomOf="@+id/imageView26"
         />
 

@@ -204,6 +204,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="48dp"
         android:backgroundTint="@color/light_green"
+        android:onClick="nav_back"
         android:text="Save Changes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
