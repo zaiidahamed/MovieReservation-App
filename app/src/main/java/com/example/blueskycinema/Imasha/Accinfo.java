@@ -1,5 +1,6 @@
 package com.example.blueskycinema.Imasha;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +25,10 @@ public class Accinfo extends AppCompatActivity {
     }
 
     public void nav_prof (View view){
+
         setContentView(R.layout.account_information);
+        Intent intent = new Intent(this, PostReview.class);
+        startActivity(intent);
     }
     public void nav_ther (View view){
         setContentView(R.layout.theater_rating);
