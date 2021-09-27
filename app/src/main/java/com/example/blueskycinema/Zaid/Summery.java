@@ -5,21 +5,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.blueskycinema.DB_Handler;
 import com.example.blueskycinema.MainActivity;
 import com.example.blueskycinema.R;
+//import com.example.blueskycinema.Hasith.add_movies;
+
+import java.util.ArrayList;
 
 public class Summery extends AppCompatActivity {
 
+    //private ArrayList<add_movies> arrayList;
+
     TextView print_date1, print_time1, print_tot1;
+    ImageView bl_moviePoster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summery);
+
+        DB_Handler db_handler = new DB_Handler(this);
 
         Intent newIntent = getIntent();
         String selected_date = newIntent.getStringExtra("SELECTED_DATE");
@@ -29,10 +38,12 @@ public class Summery extends AppCompatActivity {
         print_date1 = findViewById(R.id.bl_date);
         print_time1 = findViewById(R.id.bl_time);
         print_tot1 = findViewById(R.id.bl_amount);
+        bl_moviePoster = findViewById(R.id.bl_moviePoster);
 
         print_date1.setText(selected_date);
         print_time1.setText(selected_time);
         print_tot1.setText(total_amount);
+        bl_moviePoster.setImageBitmap(db_handler.getImg(1));
 
     }
 

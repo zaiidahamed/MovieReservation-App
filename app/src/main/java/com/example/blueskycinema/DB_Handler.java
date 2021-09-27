@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -326,6 +328,22 @@ public class DB_Handler extends SQLiteOpenHelper {
 
         db.close();
         return status;
+    }
+
+    //get image from database
+    public Bitmap getImg(int id){
+
+        SQLiteDatabase db = getWritableDatabase();
+        Bitmap bitmap = null;
+
+        Cursor cursor = db.rawQuery("SELECT * FROM "+MOVIE_TABLE+ " WHERE "+MOVIE_COLUMN_ID+ " =? ", new String[]{
+                String.valueOf(id)
+        });
+        if (cursor.moveToNext()){
+            byte[] image = cursor.getBlob(7);
+            bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+        }
+        return bitmap;
     }
 
 
