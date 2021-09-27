@@ -1,6 +1,7 @@
 package com.example.blueskycinema.Hasith;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -29,22 +30,45 @@ public class add_movies extends AppCompatActivity {
     }
 
     //Intent
-    public void NextButton(View view){
-        Intent intent = new Intent(this, add_movies_2.class);
+    public void NextButton(View view) {
 
-        String movieName = addMovieName.getText().toString();
-        String duration = addDuration.getText().toString();
-        String year = addYear.getText().toString();
-        String genre = addGenre.getText().toString();
-        String description = addDescription.getText().toString();
+        if (addMovieName.length() == 0) {
+            addMovieName.setError("Enter Movie Name");
+        }
+        else if(addDuration.length() == 0) {
+            addDuration.setError("Enter Duration");
+        }
+        else if(addYear.length() == 0) {
+            addYear.setError("Enter Year");
+        }
+        else if(addYear.length() > 4) {
+            addYear.setError("Enter Valid Year");
+        }
+        else if(addGenre.length() == 0) {
+            addGenre.setError("Enter Genre");
+        }
+        else if(addDescription.length() == 0) {
+            addDescription.setError("Enter Description");
+        }
+        else if (addDescription.length() >= 100){
+            addDescription.setError(("Maximum 100 characters"));
+        }
+        else {
+            Intent intent = new Intent(this, add_movies_2.class);
 
-        intent.putExtra("mName", movieName);
-        intent.putExtra("mDuration", duration);
-        intent.putExtra("mYear", year);
-        intent.putExtra("mGenre", genre);
-        intent.putExtra("mDescription", description);
+            String movieName = addMovieName.getText().toString();
+            String duration = addDuration.getText().toString();
+            String year = addYear.getText().toString();
+            String genre = addGenre.getText().toString();
+            String description = addDescription.getText().toString();
 
-        startActivity(intent);
+            intent.putExtra("mName", movieName);
+            intent.putExtra("mDuration", duration);
+            intent.putExtra("mYear", year);
+            intent.putExtra("mGenre", genre);
+            intent.putExtra("mDescription", description);
+
+            startActivity(intent);
+        }
     }
-
 }
