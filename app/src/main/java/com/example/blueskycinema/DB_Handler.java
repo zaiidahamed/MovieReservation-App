@@ -243,11 +243,7 @@ import java.util.ArrayList;
 
       @Override
       public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-//            String DROP_TABLE_QUERY = "DROP TABLE IF EXISTS " + TABLE_NAME;
-//            //Drop older table if existed
-//            db.execSQL(DROP_TABLE_QUERY);
-//            //Create tables again
-//            onCreate(db);
+
       }
 
       //Zaid function implementation123
