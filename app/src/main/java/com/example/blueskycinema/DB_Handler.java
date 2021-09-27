@@ -370,6 +370,42 @@ public class DB_Handler extends SQLiteOpenHelper {
     }
 
 
+    //Login & Registration
+    public boolean insertData(String un, String email, String contact, String pw){
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        ContentValues val = new ContentValues();
+        val.put(USER_COLUMN_USERNAME, un);
+        val.put(USER_COLUMN_EMAIL, email);
+        val.put(USER_COLUMN_CONTACT, contact);
+        val.put(USER_COLUMN_PASSWORD, pw);
+
+        long result = myDB.insert(USER_TABLE, null, val);
+        if (result == -1)
+            return false;
+        else
+            return true;
+    }
+
+    //check username already exists
+    public boolean checkUsername(String un){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        Cursor cursor = myDB.rawQuery("SELECT * FROM "+ USER_TABLE + " WHERE " + USER_COLUMN_USERNAME + " = ? ", new String[]{un});
+        if(cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
+
+    //validate logins
+    public boolean validateLogin(String un, String pw){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        Cursor cursor = myDB.rawQuery("SELECT * FROM " + USER_TABLE + " WHERE " + USER_COLUMN_USERNAME + " = ? AND " + USER_COLUMN_PASSWORD + " = ? ", new String[]{un, pw});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
+
 
     //Janani function implementation
 

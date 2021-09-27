@@ -20,6 +20,7 @@
         <activity android:name=".Zaid.Tickets" />
         <activity android:name=".Zaid.ReserveNowActivity" />
 
+
         <activity android:name=".Hasith.UserHome"></activity>
         <activity android:name=".Hasith.MovieDetails"></activity>
         <activity android:name=".Hasith.add_movies" />
@@ -28,6 +29,7 @@
         <activity android:name=".Hasith.startup" />
         <activity android:name=".Hasith.EditMovie" />
         <activity android:name=".Hasith.UserRegistration" />
+        <activity android:name=".Hasith.Login" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
