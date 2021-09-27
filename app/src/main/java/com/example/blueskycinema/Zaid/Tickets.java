@@ -58,29 +58,38 @@ public class Tickets extends AppCompatActivity {
 
     //continue button
     public void loadActivitySummery(View v){
-        //get data from previous activity
-        Intent newIntent = getIntent();
-        String selected_date = newIntent.getStringExtra("SELECTED_DATE");
-        String selected_time = newIntent.getStringExtra("SELECTED_TIME");
+        //validations
+        if (editFullTckts.length() == 0) {
+            editFullTckts.setError("Enter a number");
+        }
+        else if(editBoxTckts.length() == 0) {
+            editBoxTckts.setError("Enter a number");
+        }
+        else {
+            //get data from previous activity
+            Intent newIntent = getIntent();
+            String selected_date = newIntent.getStringExtra("SELECTED_DATE");
+            String selected_time = newIntent.getStringExtra("SELECTED_TIME");
 
-        //Create intent for next activity
-        setContentView(R.layout.activity_summery);
-        Intent intent = new Intent(this, Summery.class);
-        String totalAmount = amount1.getText().toString();
-        String fullTickets = editFullTckts.getText().toString();
-        String boxTickets = editBoxTckts.getText().toString();
+            //Create intent for next activity
+            setContentView(R.layout.activity_summery);
+            Intent intent = new Intent(this, Summery.class);
+            String totalAmount = amount1.getText().toString();
+            String fullTickets = editFullTckts.getText().toString();
+            String boxTickets = editBoxTckts.getText().toString();
 //        String avFullSeats = avSeats1.getText().toString();
 //        String avBoxSeats = avBox1.getText().toString();
 
-        intent.putExtra("SELECTED_DATE", selected_date);
-        intent.putExtra("SELECTED_TIME", selected_time);
-        intent.putExtra("TOTAL_AMOUNT", totalAmount);
-        intent.putExtra("TOTAL_FULL_TICKETS", fullTickets);
-        intent.putExtra("TOTAL_BOX_TICKETS", boxTickets);
+            intent.putExtra("SELECTED_DATE", selected_date);
+            intent.putExtra("SELECTED_TIME", selected_time);
+            intent.putExtra("TOTAL_AMOUNT", totalAmount);
+            intent.putExtra("TOTAL_FULL_TICKETS", fullTickets);
+            intent.putExtra("TOTAL_BOX_TICKETS", boxTickets);
 //        intent.putExtra("AVAILABLE_FULL_SEATS", avFullSeats);
 //        intent.putExtra("AVAILABLE_BOX_SEATS", avBoxSeats);
 
-        startActivity(intent);
+            startActivity(intent);
+        }
     }
 
 }
