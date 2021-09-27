@@ -220,7 +220,6 @@ public class DB_Handler extends SQLiteOpenHelper {
         String drop_booking_table = "DROP TABLE IF EXISTS "+ BOOKING_TABLE;
         String drop_discount_table = "DROP TABLE IF EXISTS "+ DISCOUNT_TABLE;
         String drop_reviews_table = "DROP TABLE IF EXISTS "+ REVIEWS_TABLE;
-        String drop_rating_table = "DROP TABLE IF EXISTS "+ RATING_TABLE;
         String drop_fav_table = "DROP TABLE IF EXISTS "+ FAVORITE_TABLE;
 
         db.execSQL(drop_admin_table);
@@ -229,7 +228,6 @@ public class DB_Handler extends SQLiteOpenHelper {
         db.execSQL(drop_booking_table);
         db.execSQL(drop_discount_table);
         db.execSQL(drop_reviews_table);
-        db.execSQL(drop_rating_table);
         db.execSQL(drop_fav_table);
 
         onCreate(db);
@@ -347,20 +345,20 @@ public class DB_Handler extends SQLiteOpenHelper {
     }
 
     //get image from database
-    public Bitmap getImg(int id){
-
-        SQLiteDatabase db = getWritableDatabase();
-        Bitmap bitmap = null;
-
-        Cursor cursor = db.rawQuery("SELECT * FROM "+MOVIE_TABLE+ " WHERE "+MOVIE_COLUMN_ID+ " =? ", new String[]{
-                String.valueOf(id)
-        });
-        if (cursor.moveToNext()){
-            byte[] image = cursor.getBlob(7);
-            bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-        }
-        return bitmap;
-    }
+//    public Bitmap getImg(int id){
+//
+//        SQLiteDatabase db = getWritableDatabase();
+//        Bitmap bitmap = null;
+//
+//        Cursor cursor = db.rawQuery("SELECT * FROM "+MOVIE_TABLE+ " WHERE "+MOVIE_COLUMN_ID+ " =? ", new String[]{
+//                String.valueOf(id)
+//        });
+//        if (cursor.moveToNext()){
+//            byte[] image = cursor.getBlob(7);
+//            bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+//        }
+//        return bitmap;
+//    }
 
 
     //**********************************************************************************************

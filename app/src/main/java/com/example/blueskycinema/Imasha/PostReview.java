@@ -52,11 +52,13 @@ public class PostReview extends AppCompatActivity {
     }
 
     public void cancel_btn (View view){
+        setContentView(R.layout.reviews);
         Intent intent = new Intent(this, GetReviews.class);
         startActivity(intent);
     }
 
     public void profileBtn (View view){
+        setContentView(R.layout.profle);
         Intent intent = new Intent(this, Accinfo.class);
         startActivity(intent);
     }
