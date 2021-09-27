@@ -1,22 +1,30 @@
 package com.example.blueskycinema;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.example.blueskycinema.Zaid.bookingModel;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.content.ContentValues.TAG;
+
 public class DB_Handler extends SQLiteOpenHelper {
 
     Context context;
-    
+
     //Database name
     public static final String DATABASE_NAME = "Movie.db";
-
-    //No of seats in the theater
-    public static final int NO_OF_SEATS = 200;
-    public static final int NO_OF_BOX_SEATS = 15;
 
     //Movie table
     public static final String MOVIE_TABLE = "movies_table";
@@ -49,12 +57,13 @@ public class DB_Handler extends SQLiteOpenHelper {
 
     //Booking table
     public static final String BOOKING_TABLE = "booking_table";
+    public static final String BOOKING_COLUMN_ID = "bookingId";
     public static final String BOOKING_COLUMN_N_TICKETS = "normalTickets";
     public static final String BOOKING_COLUMN_BOX_TICKETS = "boxTickets";
     public static final String BOOKING_COLUMN_DATE = "date";
     public static final String BOOKING_COLUMN_TIME = "time";
     public static final String BOOKING_COLUMN_AMOUNT = "amount";
-    public static final String BOOKING_COLUMN_MOVIE_ID = "movieID";
+    public static final String BOOKING_COLUMN_MOVIE_NAME = "movieName";
 
     //Discount table
     public static final String DISCOUNT_TABLE = "discount_table";
@@ -95,7 +104,7 @@ public class DB_Handler extends SQLiteOpenHelper {
         //create movie table
         String create_movies_table =
                 "CREATE TABLE "+MOVIE_TABLE+" ( "+
-                        MOVIE_COLUMN_ID+" INTEGER PRIMARY KEY, " +
+                        MOVIE_COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         MOVIE_COLUMN_NAME+" TEXT, "+
                         MOVIE_COLUMN_GENRE+" TEXT, "+
                         MOVIE_COLUMN_DURATION+" TEXT, "+
@@ -127,12 +136,13 @@ public class DB_Handler extends SQLiteOpenHelper {
         //create booking table
         String create_booking_table =
                 "CREATE TABLE "+BOOKING_TABLE+" ( "+
-                        BOOKING_COLUMN_N_TICKETS+" INTEGER PRIMARY KEY, " +
-                        BOOKING_COLUMN_BOX_TICKETS+" INTEGER, "+
-                        BOOKING_COLUMN_DATE+" DATE, "+
-                        BOOKING_COLUMN_TIME+" DATETIME, "+
-                        BOOKING_COLUMN_AMOUNT+" REAL, "+
-                        BOOKING_COLUMN_MOVIE_ID+" INTEGER)";
+                        BOOKING_COLUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        BOOKING_COLUMN_N_TICKETS+" TEXT, "+
+                        BOOKING_COLUMN_BOX_TICKETS+" TEXT, "+
+                        BOOKING_COLUMN_DATE+" TEXT, "+
+                        BOOKING_COLUMN_TIME+" TEXT, "+
+                        BOOKING_COLUMN_AMOUNT+" TEXT, "+
+                        BOOKING_COLUMN_MOVIE_NAME+" TEXT)";
 
         //create discount table
         String create_discount_table =
@@ -179,19 +189,162 @@ public class DB_Handler extends SQLiteOpenHelper {
             db.execSQL(create_rating_table);
             db.execSQL(create_favorite_table);
 
-            Toast.makeText(context, "Table created successfully!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Table created successfully!", Toast.LENGTH_SHORT).show();
         }
         catch (Exception e){
-            Toast.makeText(context, "Table creation failed!:"+ e.getMessage(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Table creation failed!:", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        String drop_admin_table = "DROP TABLE IF EXISTS "+ ADMIN_TABLE;
+        String drop_movie_table = "DROP TABLE IF EXISTS "+ MOVIE_TABLE;
+        String drop_user_table = "DROP TABLE IF EXISTS "+ USER_TABLE;
+        String drop_booking_table = "DROP TABLE IF EXISTS "+ BOOKING_TABLE;
+        String drop_discount_table = "DROP TABLE IF EXISTS "+ DISCOUNT_TABLE;
+        String drop_reviews_table = "DROP TABLE IF EXISTS "+ REVIEWS_TABLE;
+        String drop_rating_table = "DROP TABLE IF EXISTS "+ RATING_TABLE;
+        String drop_fav_table = "DROP TABLE IF EXISTS "+ FAVORITE_TABLE;
+
+        db.execSQL(drop_admin_table);
+        db.execSQL(drop_movie_table);
+        db.execSQL(drop_user_table);
+        db.execSQL(drop_booking_table);
+        db.execSQL(drop_discount_table);
+        db.execSQL(drop_reviews_table);
+        db.execSQL(drop_rating_table);
+        db.execSQL(drop_fav_table);
+
+        onCreate(db);
+    }
+
+    //Zaid function implementation
+
+    //add a booking to database
+    public long addBooking(String noOfTckts, String noOfBoxTckts, String date, String time, String amount, String movieName){
+        //gets the data repository in write mode
+        SQLiteDatabase db = getWritableDatabase();
+
+        //create a new map of values, where column names the keys
+        ContentValues values = new ContentValues();
+        values.put(BOOKING_COLUMN_N_TICKETS, noOfTckts);
+        values.put(BOOKING_COLUMN_BOX_TICKETS, noOfBoxTckts);
+        values.put(BOOKING_COLUMN_DATE, date);
+        values.put(BOOKING_COLUMN_TIME, time);
+        values.put(BOOKING_COLUMN_AMOUNT, amount);
+        values.put(BOOKING_COLUMN_MOVIE_NAME, movieName);
+
+
+        //Insert the new raw, returning primary key value of the new raw
+        long newBooking = db.insert(BOOKING_TABLE, null, values);
+        return newBooking;
 
     }
 
-    //Zaid function implementation123
+
+    //retrieve bookings from database
+    public ArrayList<bookingModel> getBookingList(){
+        String sql = "select * from " + BOOKING_TABLE;
+        SQLiteDatabase db = getReadableDatabase();
+
+        ArrayList<bookingModel> storeBooking = new ArrayList<>();
+        Cursor cursor = db.rawQuery(sql,null);
+
+        if (cursor.moveToFirst()){
+            do {
+                int id = Integer.parseInt(cursor.getString(0));
+                String noOfTckts = cursor.getString(1);
+                String noOfBoxTckts = cursor.getString(2);
+                String date = cursor.getString(3);
+                String time = cursor.getString(4);
+                String amount = cursor.getString(5);
+                String movieName = cursor.getString(6);
+
+                storeBooking.add(new bookingModel(id,noOfTckts,noOfBoxTckts,date,time,amount, movieName));
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        return storeBooking;
+    }
+
+
+    //get a single booking
+    public bookingModel getSingleBooking(int id){
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = db.query(BOOKING_TABLE, new String[]{
+                BOOKING_COLUMN_ID,
+                BOOKING_COLUMN_N_TICKETS,
+                BOOKING_COLUMN_BOX_TICKETS,
+                BOOKING_COLUMN_DATE,
+                BOOKING_COLUMN_TIME,
+                BOOKING_COLUMN_AMOUNT,
+                BOOKING_COLUMN_MOVIE_NAME,
+        },BOOKING_COLUMN_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
+
+        bookingModel bModel;
+        if (cursor != null){
+            cursor.moveToFirst();
+            bModel = new bookingModel(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getString(6)
+            );
+            return bModel;
+        }
+        return null;
+    }
+
+
+    //delete booking
+    public void deleteBooking(int id){
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(BOOKING_TABLE, BOOKING_COLUMN_ID + " = ? ", new String[]
+                {String.valueOf(id)});
+    }
+
+
+    //update booking
+    public int updateBooking(bookingModel model) {
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        //create a new map of values, where column names the keys
+        ContentValues values = new ContentValues();
+
+        values.put(BOOKING_COLUMN_N_TICKETS, model.getN_tickets());
+        values.put(BOOKING_COLUMN_BOX_TICKETS, model.getBox_tickets());
+        values.put(BOOKING_COLUMN_DATE, model.getDate());
+        values.put(BOOKING_COLUMN_TIME, model.getTime());
+        values.put(BOOKING_COLUMN_AMOUNT, model.getAmount());
+        values.put(BOOKING_COLUMN_MOVIE_NAME, model.getMovieName());
+
+        int status = db.update(BOOKING_TABLE, values, BOOKING_COLUMN_ID +" =? ", new String[]{String.valueOf(model.getId())});
+
+        db.close();
+        return status;
+    }
+
+    //get image from database
+    public Bitmap getImg(int id){
+
+        SQLiteDatabase db = getWritableDatabase();
+        Bitmap bitmap = null;
+
+        Cursor cursor = db.rawQuery("SELECT * FROM "+MOVIE_TABLE+ " WHERE "+MOVIE_COLUMN_ID+ " =? ", new String[]{
+                String.valueOf(id)
+        });
+        if (cursor.moveToNext()){
+            byte[] image = cursor.getBlob(7);
+            bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
+        }
+        return bitmap;
+    }
 
 
 

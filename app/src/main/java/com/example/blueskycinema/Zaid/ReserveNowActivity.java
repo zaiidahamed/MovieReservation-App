@@ -3,21 +3,27 @@ package com.example.blueskycinema.Zaid;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.blueskycinema.R;
 
 import java.util.Calendar;
 
-public class ReserveNowActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
+public class ReserveNowActivity extends AppCompatActivity {
 
-
+    TextView tv_showDate;
+    RadioGroup radioGroup2;
+    RadioButton time1, time2, time3;
+    private String selectedType="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,21 +31,25 @@ public class ReserveNowActivity extends AppCompatActivity implements DatePickerD
         setContentView(R.layout.activity_reserve_now);
 
         //calendar implementation
-        ImageView imageView = findViewById(R.id.imageView);
-        TextView textView_showDate = findViewById(R.id.textView_showDate);
 
-        Calendar c =  Calendar.getInstance();
+        ImageView ivCalender = findViewById(R.id.ivCalender);
+        tv_showDate = findViewById(R.id.tv_showDate);
+
+
+        Calendar c = Calendar.getInstance();
         int mYear = c.get(Calendar.YEAR);
         int mMonth = c.get(Calendar.MONTH);
         int mDay = c.get(Calendar.DAY_OF_MONTH);
 
-        imageView.setOnClickListener(new View.OnClickListener() {
+
+        ivCalender.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(ReserveNowActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        textView_showDate.setText(year+"-"+month+"-"+dayOfMonth);
+                        tv_showDate.setText(year + " - " + (month + 1) + " - " + dayOfMonth);
                     }
                 }, mYear, mMonth, mDay);
 
@@ -47,10 +57,41 @@ public class ReserveNowActivity extends AppCompatActivity implements DatePickerD
             }
         });
 
+        //Select movie time
+        radioGroup2 = findViewById(R.id.radioGroup2);
+        time1 = findViewById(R.id.time1);
+        time2 = findViewById(R.id.time2);
+        time3 = findViewById(R.id.time3);
+
+
+        time1.setSelected(true);
+        radioGroup2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(i==R.id.time1){
+                    selectedType = time1.getText().toString();
+                }else if(i==R.id.time2){
+                    selectedType = time2.getText().toString();
+                }else{
+                    selectedType = time3.getText().toString();
+                }
+            }
+        });
+
+
     }
 
-    @Override
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
+    //continue button
+    public void loadActivityTickets(View v){
+        setContentView(R.layout.activity_tickets);
+        Intent intent = new Intent(this, Tickets.class);
+
+        String date = tv_showDate.getText().toString();
+        intent.putExtra("SELECTED_DATE", date);
+
+        intent.putExtra("SELECTED_TIME", selectedType);
+
+        startActivity(intent);
     }
 }
