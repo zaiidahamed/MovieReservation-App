@@ -84,29 +84,6 @@ public class EditMovie extends AppCompatActivity {
             }
         });
 
-//        Intent intent = getIntent();
-//        editMode = intent.getBooleanExtra("editMode", editMode);
-//        id = intent.getStringExtra("ID");
-//        name = intent.getStringExtra("NAME");
-//        duration = intent.getStringExtra("DURATION");
-//        year = intent.getStringExtra("YEAR");
-//        description = intent.getStringExtra("DESCRIPTION");
-//
-//        if (editMode) {
-//
-//            editMode = intent.getBooleanExtra("editMode", true);
-//            id = intent.getStringExtra("ID");
-//            name = intent.getStringExtra("NAME");
-//            duration = intent.getStringExtra("DURATION");
-//            year = intent.getStringExtra("YEAR");
-//            description = intent.getStringExtra("DESCRIPTION");
-//
-//            addMovieName.setText(name);
-//            addDuration.setText(duration);
-//            addYear.setText(year);
-//            addDescription.setText(description);
-//
-//        }
     }
 
 

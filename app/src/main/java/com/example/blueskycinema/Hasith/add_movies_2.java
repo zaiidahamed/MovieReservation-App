@@ -4,11 +4,14 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,16 +31,17 @@ public class add_movies_2 extends AppCompatActivity {
     EditText addMovieCast,addTrailerLink,addTicketPrice;
     Button ImageAdd;
 
-    private static final int CAMERA_REQUEST_CODE = 100;
-    private static final int STORAGE_REQUEST_CODE = 101;
+    private static final int PICK_IMAGE = 100;
 
-    private static final int IMAGE_PICK_CAMERA_CODE = 102;
-    private static final int IMAGE_PICK_GALLERY_CODE = 102;
-
-    private String[] cameraPermissions;
-    private String[] storagePermissions;
-
-    private Uri imageUri;
+//    private static final int STORAGE_REQUEST_CODE = 101;
+//
+//    private static final int IMAGE_PICK_CAMERA_CODE = 102;
+//    private static final int IMAGE_PICK_GALLERY_CODE = 102;
+//
+//    private String[] cameraPermissions;
+//    private String[] storagePermissions;
+//
+//    private Uri imageUri;
 
     String takeMovieName;
     String takeDuration;
@@ -49,6 +53,8 @@ public class add_movies_2 extends AppCompatActivity {
      DatePickerDialog datePickerDialog1;
      Button dateButton;
      Button dateButton2;
+
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +68,20 @@ public class add_movies_2 extends AppCompatActivity {
 
         ImageAdd = findViewById(R.id.buttonUploadImage);
 
-        //Permissions
-        cameraPermissions = new String[] {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-        storagePermissions = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        //Add Image
+        ImageAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT,Uri.parse(
+                        "content://media/internal/images/media"
+                ));
+                startActivityForResult(intent, PICK_IMAGE);
+            }
+        });
+
+//        //Permissions
+//        cameraPermissions = new String[] {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+//        storagePermissions = new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
 //        //Image Upload Method
 //        ImageAdd.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +109,35 @@ public class add_movies_2 extends AppCompatActivity {
         dateButton2.setText(getTodaysDate());
 
 
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode==RESULT_OK && requestCode==PICK_IMAGE) {
+            Uri uri = data.getData();
+            String x = getPath(uri);
+
+            Toast.makeText(getApplicationContext(),x,Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
+    public String getPath(Uri uri) {
+        if(uri==null)return null;
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = managedQuery(uri,projection,null,null,null);
+        if(cursor!=null){
+            int column_index = cursor
+                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        }
+        return uri.getPath();
     }
 
 
@@ -254,7 +300,7 @@ public class add_movies_2 extends AppCompatActivity {
 //    public void onRequestPermissionsResult(int requestCode, @NonNull @org.jetbrains.annotations.NotNull String[] permissions, @NonNull @org.jetbrains.annotations.NotNull int[] grantResults) {
 //        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 //    }
-
+//
     //Submit All Data
     public void SubmitMovie(View view){
 
@@ -262,6 +308,9 @@ public class add_movies_2 extends AppCompatActivity {
         long info = DB.addMovie(takeMovieName, takeDuration, takeYear, takeGenre, takeDescription, addMovieCast.getText().toString(), addTrailerLink.getText().toString(), dateButton.getText().toString(), dateButton2.getText().toString(), addTicketPrice.getText().toString());
 
         if( info > 0 ){
+            setContentView(R.layout.main_view);
+            Intent intent = new Intent(this, displayMovies.class);
+            startActivity(intent);
             Toast.makeText(this, "Successful", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "UnSuccessful", Toast.LENGTH_SHORT).show();

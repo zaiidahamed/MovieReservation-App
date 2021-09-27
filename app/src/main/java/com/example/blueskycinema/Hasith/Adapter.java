@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -161,7 +162,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
         public Holder(@NonNull View itemView) {
             super(itemView);
 
-            profileIv = itemView.findViewById(R.id.profileIv);
+            profileIv = itemView.findViewById(R.id.editBtn);
             MName = itemView.findViewById(R.id.MName);
             MDuration = itemView.findViewById(R.id.MDuration);
             MYear = itemView.findViewById(R.id.MYear);

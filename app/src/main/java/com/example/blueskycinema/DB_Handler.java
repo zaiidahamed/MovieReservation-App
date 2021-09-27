@@ -5,12 +5,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.example.blueskycinema.Hasith.Model;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class DB_Handler extends SQLiteOpenHelper {
@@ -223,6 +226,8 @@ public class DB_Handler extends SQLiteOpenHelper {
 
 
     //create a new map of values, where column names the keys
+
+
         ContentValues values = new ContentValues();
         values.put(MOVIE_COLUMN_NAME, MovieName);
         values.put(MOVIE_COLUMN_DURATION, Duration);
@@ -231,6 +236,19 @@ public class DB_Handler extends SQLiteOpenHelper {
         values.put(MOVIE_COLUMN_DESCRIPTION, Description);
 
         values.put(MOVIE_COLUMN_CAST, Cast);
+
+//        try {
+//            FileInputStream fs = new FileInputStream(poster);
+//            byte[] imgbyte = new byte[fs.available()];
+//            fs.read(imgbyte);
+//
+//            values.put(MOVIE_COLUMN_POSTER, imgbyte);
+//
+//
+//        }catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
         values.put(MOVIE_COLUMN_TRAILER, Trailer);
         values.put(MOVIE_COLUMN_START_DATE, StartDate);
         values.put(MOVIE_COLUMN_END_DATE, EndDate);
@@ -242,6 +260,7 @@ public class DB_Handler extends SQLiteOpenHelper {
         long newMovieId = myDB.insert(MOVIE_TABLE, null, values);
         return newMovieId;
     }
+
 
     //Retrieve Data
     public ArrayList<Model> getAllData(String orderBy) {
