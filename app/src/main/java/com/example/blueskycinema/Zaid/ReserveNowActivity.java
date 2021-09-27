@@ -30,8 +30,8 @@ public class ReserveNowActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reserve_now);
 
-        //calendar implementation
 
+        //calendar implementation
         ImageView ivCalender = findViewById(R.id.ivCalender);
         tv_showDate = findViewById(R.id.tv_showDate);
 
@@ -77,20 +77,22 @@ public class ReserveNowActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
 
     //continue button
     public void loadActivityTickets(View v){
         setContentView(R.layout.activity_tickets);
+        //GET MOVIE ID
+        Intent newIntent = getIntent();
+        String movieId = newIntent.getStringExtra("MOVIE_ID");
+
         Intent intent = new Intent(this, Tickets.class);
 
         String date = tv_showDate.getText().toString();
         intent.putExtra("SELECTED_DATE", date);
-
         intent.putExtra("SELECTED_TIME", selectedType);
+        intent.putExtra("MOVIE_ID", movieId);
 
         startActivity(intent);
     }
