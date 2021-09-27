@@ -41,11 +41,11 @@
         android:layout_marginEnd="92dp"
         android:layout_marginRight="92dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button24"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn"
         app:srcCompat="@drawable/google" />
 
     <Button
-        android:id="@+id/button24"
+        android:id="@+id/loginBtn"
         android:layout_width="320dp"
         android:layout_height="60dp"
         android:layout_marginTop="24dp"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName12"
+        android:id="@+id/usernameLogin"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
@@ -79,7 +79,7 @@
         app:layout_constraintTop_toBottomOf="@+id/accinfobtn" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName13"
+        android:id="@+id/passwordLogin"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
@@ -90,7 +90,7 @@
         android:background="@drawable/search_bg"
         android:ems="10"
         android:hint="  Enter Password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:text="@string/login_password"
         android:textColor="@color/white"
         android:textColorHint="#808080"
@@ -126,7 +126,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button25"
+        android:id="@+id/LoginToSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -153,20 +153,20 @@
 
     <ImageView
         android:id="@+id/imageView12"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3"
-        app:srcCompat="@drawable/avatar2" />
+        app:srcCompat="@drawable/pngegg" />
 
     <TextView
         android:id="@+id/accinfobtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="User Name"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -179,13 +179,13 @@
         android:id="@+id/textView38"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="Forgot Password?"
         android:textColor="#808080"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName13" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
 
     <TextView
         android:id="@+id/textView26"
@@ -198,7 +198,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName12" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameLogin" />
 
     <ImageView
         android:id="@+id/imageView13"
@@ -208,10 +208,10 @@
         android:layout_marginLeft="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName12"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName12"
+        app:layout_constraintBottom_toBottomOf="@+id/usernameLogin"
+        app:layout_constraintEnd_toStartOf="@+id/usernameLogin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName12"
+        app:layout_constraintTop_toTopOf="@+id/usernameLogin"
         android:src="@drawable/ic_baseline_person_24" />
 
     <ImageView
@@ -222,10 +222,10 @@
         android:layout_marginLeft="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName13"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName13"
+        app:layout_constraintBottom_toBottomOf="@+id/passwordLogin"
+        app:layout_constraintEnd_toStartOf="@+id/passwordLogin"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName13"
+        app:layout_constraintTop_toTopOf="@+id/passwordLogin"
         android:src="@drawable/ic_baseline_lock_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

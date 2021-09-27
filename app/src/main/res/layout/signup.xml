@@ -12,10 +12,10 @@
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName16"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName16"
+        app:layout_constraintBottom_toBottomOf="@+id/signupContact"
+        app:layout_constraintEnd_toStartOf="@+id/signupContact"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName16"
+        app:layout_constraintTop_toTopOf="@+id/signupContact"
         android:src="@drawable/ic_baseline_phone_24" />
 
     <ImageView
@@ -24,10 +24,10 @@
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName15"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName15"
+        app:layout_constraintBottom_toBottomOf="@+id/signupEmail"
+        app:layout_constraintEnd_toStartOf="@+id/signupEmail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName15"
+        app:layout_constraintTop_toTopOf="@+id/signupEmail"
         android:src="@drawable/ic_baseline_email_24" />
 
     <ImageView
@@ -36,10 +36,10 @@
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName14"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName14"
+        app:layout_constraintBottom_toBottomOf="@+id/signupUsername"
+        app:layout_constraintEnd_toStartOf="@+id/signupUsername"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName14"
+        app:layout_constraintTop_toTopOf="@+id/signupUsername"
         android:src="@drawable/ic_baseline_person_24" />
 
     <ImageView
@@ -48,10 +48,10 @@
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName17"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName17"
+        app:layout_constraintBottom_toBottomOf="@+id/signupPassword"
+        app:layout_constraintEnd_toStartOf="@+id/signupPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName17"
+        app:layout_constraintTop_toTopOf="@+id/signupPassword"
         android:src="@drawable/ic_baseline_lock_24" />
 
     <ImageView
@@ -60,14 +60,14 @@
         android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName18"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName18"
+        app:layout_constraintBottom_toBottomOf="@+id/signupPasswordReEnter"
+        app:layout_constraintEnd_toStartOf="@+id/signupPasswordReEnter"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName18"
+        app:layout_constraintTop_toTopOf="@+id/signupPasswordReEnter"
         android:src="@drawable/ic_baseline_lock_24" />
 
     <Button
-        android:id="@+id/button26"
+        android:id="@+id/SignupBtn"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginTop="32dp"
@@ -76,10 +76,10 @@
         app:backgroundTint="#E51937"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName18" />
+        app:layout_constraintTop_toBottomOf="@+id/signupPasswordReEnter" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName17"
+        android:id="@+id/signupPassword"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
@@ -89,7 +89,7 @@
         android:layout_marginRight="16dp"
         android:background="@drawable/search_bg"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:text="@string/signup_password"
         android:textColor="@color/white"
         android:textColorHint="#808080"
@@ -99,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView43" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName18"
+        android:id="@+id/signupPasswordReEnter"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
@@ -109,7 +109,7 @@
         android:layout_marginRight="16dp"
         android:background="@drawable/search_bg"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:text="@string/signup_reenter_password"
         android:textColor="@color/white"
         android:textColorHint="#808080"
@@ -119,7 +119,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView44" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName14"
+        android:id="@+id/signupUsername"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
@@ -130,7 +130,7 @@
         android:background="@drawable/search_bg"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/signup_username"
+        android:text=""
         android:textColor="@color/white"
         android:textColorHint="#808080"
         app:layout_constraintEnd_toEndOf="parent"
@@ -139,7 +139,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView40" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName15"
+        android:id="@+id/signupEmail"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
@@ -149,7 +149,7 @@
         android:layout_marginRight="16dp"
         android:background="@drawable/search_bg"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:text="@string/signup_email"
         android:textColor="@color/white"
         android:textColorHint="#808080"
@@ -159,7 +159,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView41" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName16"
+        android:id="@+id/signupContact"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
@@ -169,7 +169,7 @@
         android:layout_marginRight="16dp"
         android:background="@drawable/search_bg"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="text|number"
         android:text="@string/signup_contact"
         android:textColor="@color/white"
         android:textColorHint="#808080"
@@ -202,7 +202,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName14" />
+        app:layout_constraintTop_toBottomOf="@+id/signupUsername" />
 
     <TextView
         android:id="@+id/textView42"
@@ -215,7 +215,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName15" />
+        app:layout_constraintTop_toBottomOf="@+id/signupEmail" />
 
     <TextView
         android:id="@+id/textView43"
@@ -228,7 +228,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName16" />
+        app:layout_constraintTop_toBottomOf="@+id/signupContact" />
 
     <TextView
         android:id="@+id/textView44"
@@ -241,7 +241,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName17" />
+        app:layout_constraintTop_toBottomOf="@+id/signupPassword" />
 
     <ImageView
         android:id="@+id/imageView18"
@@ -261,7 +261,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Signup"
+        android:text="Sign Up"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -274,6 +274,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="72dp"
         android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

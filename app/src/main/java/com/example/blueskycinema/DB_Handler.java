@@ -6,9 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import android.widget.Button;
+
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
+
 import android.widget.Toast;
 
 
@@ -23,6 +27,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
+
+import com.example.blueskycinema.Hasith.Model;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class DB_Handler extends SQLiteOpenHelper {
 
@@ -39,8 +49,11 @@ public class DB_Handler extends SQLiteOpenHelper {
     public static final String MOVIE_COLUMN_DURATION = "duration";
     public static final String MOVIE_COLUMN_YEAR = "year";
     public static final String MOVIE_COLUMN_DESCRIPTION = "description";
+    public static final String MOVIE_COLUMN_CAST = "castTEXT";
     public static final String MOVIE_COLUMN_POSTER = "poster";
     public static final String MOVIE_COLUMN_COVER = "coverImage";
+    public static final String MOVIE_COLUMN_START_DATE = "start_date";
+    public static final String MOVIE_COLUMN_END_DATE = "end_date";
     public static final String MOVIE_COLUMN_TRAILER = "trailerLink";
     public static final String MOVIE_COLUMN_PRICE = "ticketPrice";
 
@@ -104,11 +117,14 @@ public class DB_Handler extends SQLiteOpenHelper {
 
 
     public DB_Handler(Context context) {
+
         super(context, DATABASE_NAME, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+
 
         //create movie table
         String create_movies_table =
@@ -119,8 +135,11 @@ public class DB_Handler extends SQLiteOpenHelper {
                         MOVIE_COLUMN_DURATION+" TEXT, "+
                         MOVIE_COLUMN_YEAR+" INTEGER, "+
                         MOVIE_COLUMN_DESCRIPTION+" TEXT, "+
+                        MOVIE_COLUMN_CAST+" TEXT, "+
                         MOVIE_COLUMN_POSTER+" BLOB, "+
                         MOVIE_COLUMN_COVER+" BLOB, "+
+                        MOVIE_COLUMN_START_DATE+" TEXT, "+
+                        MOVIE_COLUMN_END_DATE+" TEXT, "+
                         MOVIE_COLUMN_TRAILER+" TEXT, "+
                         MOVIE_COLUMN_PRICE+" REAL)";
 
@@ -201,6 +220,12 @@ public class DB_Handler extends SQLiteOpenHelper {
             db.execSQL(create_theater_rating_table);
             db.execSQL(create_favorite_table);
 
+
+//            Toast.makeText(context, "Table created successfully!", Toast.LENGTH_SHORT).show();
+        }
+        catch (Exception e){
+//            Toast.makeText(context, "Table creation failed!:"+ e.getMessage(), Toast.LENGTH_SHORT).show();
+
             //Toast.makeText(context, "Table created successfully!", Toast.LENGTH_SHORT).show();
         }
         catch (Exception e){
@@ -209,10 +234,14 @@ public class DB_Handler extends SQLiteOpenHelper {
 
             //Toast.makeText(context, "Table creation failed!:", Toast.LENGTH_SHORT).show();
 
+
         }
     }
 
     @Override
+
+    public void onUpgrade(SQLiteDatabase myDB, int oldVersion, int newVersion) {
+
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String drop_admin_table = "DROP TABLE IF EXISTS "+ ADMIN_TABLE;
         String drop_movie_table = "DROP TABLE IF EXISTS "+ MOVIE_TABLE;
@@ -332,6 +361,7 @@ public class DB_Handler extends SQLiteOpenHelper {
 
         //create a new map of values, where column names the keys
         ContentValues values = new ContentValues();
+
 
         values.put(BOOKING_COLUMN_N_TICKETS, model.getN_tickets());
         values.put(BOOKING_COLUMN_BOX_TICKETS, model.getBox_tickets());
@@ -474,7 +504,193 @@ public class DB_Handler extends SQLiteOpenHelper {
     //**********************************************************************************************
     //Hasith function implementation
 
+    //Insert Data
+    public long addMovie(String MovieName, String Duration, String Year, String Genre, String Description, String Cast, String Trailer, String StartDate, String EndDate, String Tickets){
+    //gets the data repository in write mode
+        SQLiteDatabase myDB = getWritableDatabase();
 
+
+
+    //create a new map of values, where column names the keys
+
+
+        ContentValues values = new ContentValues();
+        values.put(MOVIE_COLUMN_NAME, MovieName);
+        values.put(MOVIE_COLUMN_DURATION, Duration);
+        values.put(MOVIE_COLUMN_YEAR, Year);
+        values.put(MOVIE_COLUMN_GENRE, Genre);
+        values.put(MOVIE_COLUMN_DESCRIPTION, Description);
+
+        values.put(MOVIE_COLUMN_CAST, Cast);
+
+//        try {
+//            FileInputStream fs = new FileInputStream(poster);
+//            byte[] imgbyte = new byte[fs.available()];
+//            fs.read(imgbyte);
+//
+//            values.put(MOVIE_COLUMN_POSTER, imgbyte);
+//
+//
+//        }catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        values.put(MOVIE_COLUMN_TRAILER, Trailer);
+        values.put(MOVIE_COLUMN_START_DATE, StartDate);
+        values.put(MOVIE_COLUMN_END_DATE, EndDate);
+        values.put(MOVIE_COLUMN_PRICE, Tickets);
+
+
+
+    //Insert the new raw, returning primary key value of the new raw
+        long newMovieId = myDB.insert(MOVIE_TABLE, null, values);
+        return newMovieId;
+    }
+
+
+    //Retrieve Data
+    public ArrayList<Model> getAllData(String orderBy) {
+        ArrayList<Model> arrayList = new ArrayList<>();
+
+        //Select all info in database
+        String selectQuery = "SELECT * FROM " + MOVIE_TABLE + " ORDER BY " + orderBy;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        //Get the data from columns
+        if (cursor.moveToNext()) {
+            do {
+                Model model = new Model(
+                        ""+cursor.getInt(cursor.getColumnIndex(MOVIE_COLUMN_ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_NAME)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_DURATION)),
+                        ""+cursor.getInt(cursor.getColumnIndex(MOVIE_COLUMN_YEAR)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_GENRE)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_DESCRIPTION)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_CAST)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_TRAILER)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_START_DATE)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_END_DATE)),
+                        ""+cursor.getString(cursor.getColumnIndex(MOVIE_COLUMN_PRICE))
+
+                );
+                arrayList.add(model);
+            } while (cursor.moveToNext());
+        }
+        db.close();
+        return arrayList;
+    }
+
+    //Update Data
+    public int updateInfo(Model model){
+        //gets the data repository in write mode
+        SQLiteDatabase myDB = getWritableDatabase();
+
+
+
+        //create a new map of values, where column names the keys
+        ContentValues values = new ContentValues();
+
+        values.put(MOVIE_COLUMN_NAME, model.getMovieName());
+        values.put(MOVIE_COLUMN_DURATION, model.getDuration());
+        values.put(MOVIE_COLUMN_YEAR, model.getYear());
+        values.put(MOVIE_COLUMN_GENRE, model.getGenre());
+        values.put(MOVIE_COLUMN_DESCRIPTION, model.getDescription());
+
+        //Update the new raw, returning primary key value of the new raw
+        int status = myDB.update(MOVIE_TABLE, values, MOVIE_COLUMN_ID +" =? ", new String[]{String.valueOf(model.getMovieId())});
+        myDB.close();
+        return status;
+    }
+
+    //get a single movie info
+    public Model getSingleMovie(int id){
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(MOVIE_TABLE, new String[]{
+                MOVIE_COLUMN_ID,
+                MOVIE_COLUMN_NAME,
+                MOVIE_COLUMN_GENRE,
+                MOVIE_COLUMN_DURATION,
+                MOVIE_COLUMN_YEAR,
+                MOVIE_COLUMN_DESCRIPTION,
+                MOVIE_COLUMN_CAST,
+                MOVIE_COLUMN_POSTER,
+                MOVIE_COLUMN_COVER,
+                MOVIE_COLUMN_START_DATE,
+                MOVIE_COLUMN_END_DATE,
+                MOVIE_COLUMN_TRAILER,
+                MOVIE_COLUMN_PRICE,
+
+
+        },MOVIE_COLUMN_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
+        Model MModel;
+        if (cursor != null){
+            cursor.moveToFirst();
+            MModel = new Model(
+                    cursor.getString(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getString(6),
+                    cursor.getString(7),
+                    cursor.getString(8),
+                    cursor.getString(9),
+                    cursor.getString(10)
+            );
+            return MModel;
+        }
+        return null;
+    }
+
+
+
+    //Delete a movie
+    public void deleteInfo (String id) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(MOVIE_TABLE, MOVIE_COLUMN_ID + " = ? ", new String[]{id});
+        db.close();
+    }
+
+
+    //Login & Registration
+    public boolean insertData(String un, String email, String contact, String pw){
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        ContentValues val = new ContentValues();
+        val.put(USER_COLUMN_USERNAME, un);
+        val.put(USER_COLUMN_EMAIL, email);
+        val.put(USER_COLUMN_CONTACT, contact);
+        val.put(USER_COLUMN_PASSWORD, pw);
+
+        long result = myDB.insert(USER_TABLE, null, val);
+        if (result == -1)
+            return false;
+        else
+            return true;
+    }
+
+    //check username already exists
+    public boolean checkUsername(String un){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        Cursor cursor = myDB.rawQuery("SELECT * FROM "+ USER_TABLE + " WHERE " + USER_COLUMN_USERNAME + " = ? ", new String[]{un});
+        if(cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
+
+    //validate logins
+    public boolean validateLogin(String un, String pw){
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        Cursor cursor = myDB.rawQuery("SELECT * FROM " + USER_TABLE + " WHERE " + USER_COLUMN_USERNAME + " = ? AND " + USER_COLUMN_PASSWORD + " = ? ", new String[]{un, pw});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
 
 
     //Janani function implementation

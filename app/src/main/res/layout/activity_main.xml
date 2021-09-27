@@ -6,7 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+<!--    <Button-->
+<!--        android:id="@+id/button"-->
+<!--        android:layout_width="160dp"-->
+<!--        android:layout_height="78dp"-->
+<!--        android:layout_marginTop="68dp"-->
+<!--        android:background="#000000"-->
+<!--        android:onClick="btn"-->
+<!--        android:text="Button"-->
+<!--        android:textSize="16sp"-->
+<!--        app:backgroundTint="#03A9F4"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
     <Button
+
+        android:id="@+id/submitButton"
+        android:layout_width="160dp"
+        android:layout_height="78dp"
+        android:background="#000000"
+        android:onClick="loadAddMovies"
+        android:text="Admin"
+        android:textSize="16sp"
+        app:backgroundTint="#03A9F4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/submitButton2"
+        android:layout_width="160dp"
+        android:layout_height="78dp"
+        android:background="#000000"
+        android:onClick="startup"
+        android:text="StartUp"
+        android:textSize="16sp"
+        app:backgroundTint="#03A9F4"
+        app:layout_constraintBottom_toTopOf="@+id/submitButton"
+
         android:id="@+id/button"
         android:layout_width="223dp"
         android:layout_height="49dp"
@@ -50,7 +91,9 @@
         android:onClick="loadReasevations"
         android:text="My reservations"
         app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 

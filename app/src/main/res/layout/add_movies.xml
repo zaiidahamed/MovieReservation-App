@@ -8,7 +8,7 @@
 
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/button800"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -16,6 +16,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
+        android:onClick="NextButton"
         android:text="@string/add_movie_next"
         android:textSize="16sp"
         app:backgroundTint="#4CD964"
@@ -23,7 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
+        app:layout_constraintTop_toBottomOf="@+id/addDescription" />
 
     <TextView
         android:id="@+id/msg"
@@ -53,7 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/addMovieName" />
 
     <TextView
         android:id="@+id/textView6"
@@ -70,7 +71,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/addDuration" />
 
     <TextView
         android:id="@+id/textView7"
@@ -87,7 +88,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+        app:layout_constraintTop_toBottomOf="@+id/addYear" />
 
     <TextView
         android:id="@+id/textView8"
@@ -104,7 +105,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+        app:layout_constraintTop_toBottomOf="@+id/addGenre" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -119,21 +120,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/ic_baseline_arrow_back_ios_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/addMovieName"
         android:layout_width="300dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
@@ -153,7 +141,7 @@
         app:layout_constraintTop_toBottomOf="@+id/msg" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/addDuration"
         android:layout_width="300dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
@@ -165,7 +153,7 @@
         android:hint="  Enter Duration"
         android:inputType="textPersonName"
         android:text="@string/add_movie_duration"
-        android:textColor="#808080"
+        android:textColor="@color/white"
         android:textColorHint="#808080"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.836"
@@ -173,7 +161,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/addYear"
         android:layout_width="300dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
@@ -184,9 +172,9 @@
         android:background="@drawable/search_bg"
         android:ems="10"
         android:hint="  Enter Released Year"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:text="@string/add_movie_year"
-        android:textColor="#808080"
+        android:textColor="@color/white"
         android:textColorHint="#808080"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.852"
@@ -194,7 +182,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/addGenre"
         android:layout_width="300dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
@@ -206,7 +194,7 @@
         android:hint=" Enter Genre"
         android:inputType="textPersonName"
         android:text="@string/add_movie_genre"
-        android:textColor="#808080"
+        android:textColor="@color/white"
         android:textColorHint="#808080"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.836"
@@ -214,7 +202,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/addDescription"
         android:layout_width="351dp"
         android:layout_height="109dp"
         android:layout_marginStart="16dp"
@@ -224,9 +212,9 @@
         android:background="@drawable/search_bg"
         android:ems="10"
         android:hint="  Enter Description"
-        android:inputType="textPersonName"
+        android:inputType="textMultiLine"
         android:text="@string/add_movie_description"
-        android:textColor="#808080"
+        android:textColor="@color/white"
         android:textColorHint="#808080"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -249,40 +237,40 @@
         android:id="@+id/imageView29"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/addMovieName"
+        app:layout_constraintEnd_toStartOf="@+id/addMovieName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toTopOf="@+id/addMovieName"
         android:src="@drawable/ic_baseline_local_movies_24" />
 
     <ImageView
         android:id="@+id/imageView30"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName3"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName3"
+        app:layout_constraintBottom_toBottomOf="@+id/addDuration"
+        app:layout_constraintEnd_toStartOf="@+id/addDuration"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName3"
+        app:layout_constraintTop_toTopOf="@+id/addDuration"
         android:src="@drawable/ic_baseline_access_time_24" />
 
     <ImageView
         android:id="@+id/imageView31"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName4"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName4"
+        app:layout_constraintBottom_toBottomOf="@+id/addYear"
+        app:layout_constraintEnd_toStartOf="@+id/addYear"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName4"
+        app:layout_constraintTop_toTopOf="@+id/addYear"
         android:src="@drawable/ic_baseline_timeline_24" />
 
     <ImageView
         android:id="@+id/imageView32"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName5"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName5"
+        app:layout_constraintBottom_toBottomOf="@+id/addGenre"
+        app:layout_constraintEnd_toStartOf="@+id/addGenre"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName5"
+        app:layout_constraintTop_toTopOf="@+id/addGenre"
         android:src="@drawable/ic_baseline_4k_24" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
