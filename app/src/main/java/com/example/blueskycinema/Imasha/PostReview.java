@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ public class PostReview extends AppCompatActivity {
     Button post,cancel;
     RatingBar rtBar;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,7 @@ public class PostReview extends AppCompatActivity {
         post= findViewById(R.id.post_btn);
         cancel = findViewById(R.id.cancel_btn);
         rtBar = findViewById(R.id.rating_bar_writePage);
+
 
 
     }
@@ -49,7 +52,13 @@ public class PostReview extends AppCompatActivity {
     }
 
     public void cancel_btn (View view){
-        setContentView(R.layout.reviews);
+        Intent intent = new Intent(this, GetReviews.class);
+        startActivity(intent);
+    }
+
+    public void profileBtn (View view){
+        Intent intent = new Intent(this, Accinfo.class);
+        startActivity(intent);
     }
 
 }

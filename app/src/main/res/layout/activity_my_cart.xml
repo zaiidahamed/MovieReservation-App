@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/divider5" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/tratBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -81,7 +81,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+        app:layout_constraintTop_toBottomOf="@+id/tratBtn" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar4"

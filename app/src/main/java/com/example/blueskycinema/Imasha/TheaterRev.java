@@ -1,5 +1,6 @@
 package com.example.blueskycinema.Imasha;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,7 +37,10 @@ public class TheaterRev extends AppCompatActivity {
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
         long info = DB.addTheterRev(theaterRev.getText().toString(),String.valueOf(rtT.getRating()),currentDate);
         if (info > 0) {
-            Toast.makeText(this, "Successful", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Thank you!", Toast.LENGTH_SHORT).show();
+            setContentView(R.layout.profle);
+            Intent intent = new Intent(this, Accinfo.class);
+            startActivity(intent);
         } else {
             Toast.makeText(this, "UnSuccessful", Toast.LENGTH_SHORT).show();
         }

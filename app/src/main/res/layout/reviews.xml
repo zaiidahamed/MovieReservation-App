@@ -112,15 +112,17 @@
 
     <ImageView
         android:id="@+id/writereview_btn"
-        android:layout_width="31dp"
-        android:layout_height="29dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
 
+        android:onClick="addRevBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.881"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totRatingtxt"
         app:srcCompat="@android:drawable/stat_notify_chat"
-        app:tint="@color/yellow" />
+        app:tint="@color/yellow"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/textView4"

@@ -1,5 +1,7 @@
 package com.example.blueskycinema.Imasha;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -16,6 +18,7 @@ public class GetReviews extends AppCompatActivity {
 
     TextView countRev,avgRating;
     RatingBar main_rating_bar;
+    ImageView msgIcon;
     RecyclerView rcView;
     DB_Handler databaseHelper;
 
@@ -30,6 +33,7 @@ public class GetReviews extends AppCompatActivity {
         countRev = findViewById(R.id.totRatingtxt);
         avgRating = findViewById(R.id.avg_ratingtxt);
         main_rating_bar = findViewById(R.id.main_rating_bar);
+        msgIcon = findViewById(R.id.writereview_btn);
         //set reviews count
         int count = DB.countReviews();
         countRev.setText(count + " Reviews");
@@ -57,6 +61,11 @@ public class GetReviews extends AppCompatActivity {
         super.onResume();
         showRecord();
     }
+
+    public void addRevBtn (View view){
+        setContentView(R.layout.writereview);
+    }
+
 
 
 }
