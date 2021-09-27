@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0F1B2B"
-    tools:context=".Zaid.Tickets">
+    android:onClick="calculateEditTickets"
+    tools:context=".Zaid.changeDate">
 
     <ImageView
         android:id="@+id/arraow4"
@@ -19,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editFullTckts1"
+        android:id="@+id/editFullTckts2"
         android:layout_width="83dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="192dp"
@@ -69,7 +70,6 @@
         android:layout_marginLeft="36dp"
         android:layout_marginTop="216dp"
         android:background="#2B3543"
-        app:layout_constraintEnd_toStartOf="@+id/view7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,7 +83,6 @@
         android:background="#2B3543"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.531"
-        app:layout_constraintStart_toEndOf="@+id/view3"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
@@ -96,7 +95,6 @@
         android:background="#2B3543"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.536"
-        app:layout_constraintStart_toEndOf="@+id/view3"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -108,7 +106,7 @@
         android:textColor="#FFFFFF"
         android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/totalSeatsView"
-        app:layout_constraintEnd_toStartOf="@+id/avSeats1"
+        app:layout_constraintEnd_toStartOf="@+id/avSeats2"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -182,7 +180,7 @@
         app:layout_constraintTop_toBottomOf="@+id/selectView1" />
 
     <TextView
-        android:id="@+id/avBox1"
+        android:id="@+id/avBox2"
         android:layout_width="140dp"
         android:layout_height="95dp"
         android:gravity="center"
@@ -195,7 +193,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/avSeats1"
+        android:id="@+id/avSeats2"
         android:layout_width="140dp"
         android:layout_height="95dp"
         android:layout_marginEnd="48dp"
@@ -307,7 +305,7 @@
         app:layout_constraintVertical_bias="0.987" />
 
     <TextView
-        android:id="@+id/amount1"
+        android:id="@+id/amount2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -329,10 +327,10 @@
         android:textAllCaps="false"
         android:textSize="20sp"
         app:backgroundTint="#4CD964"
-        app:layout_constraintBaseline_toBaselineOf="@+id/amount1"
+        app:layout_constraintBaseline_toBaselineOf="@+id/amount2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.719"
-        app:layout_constraintStart_toEndOf="@+id/amount1" />
+        app:layout_constraintStart_toEndOf="@+id/amount2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

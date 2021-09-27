@@ -16,17 +16,17 @@
         android:layout_height="39dp"
 
         android:layout_marginStart="34dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:background="#2B3543"
         android:backgroundTintMode="add"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="34dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <View
         android:id="@+id/my_reserv"
@@ -49,11 +49,13 @@
     <View
         android:id="@+id/theater_rating"
         android:layout_width="357dp"
-        android:layout_height="39dp"
+        android:layout_height="48dp"
 
         android:layout_marginStart="34dp"
+        android:layout_marginLeft="34dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:background="#2B3543"
         android:backgroundTintMode="add"
         android:visibility="visible"
@@ -61,8 +63,7 @@
         app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/my_reserv"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="34dp" />
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <View
         android:id="@+id/privecy"
@@ -181,7 +182,7 @@
         android:text="Total Watched"
         android:textColor="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.379"
+        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toEndOf="@+id/textView15"
         app:layout_constraintTop_toBottomOf="@+id/totWatch" />
 
@@ -206,39 +207,43 @@
         android:text="Total Points"
         android:textColor="@color/grey"
         app:layout_constraintEnd_toStartOf="@+id/totWatch"
-        app:layout_constraintHorizontal_bias="0.645"
+        app:layout_constraintHorizontal_bias="0.553"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <TextView
-        android:id="@+id/textView19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="84dp"
+        android:id="@+id/accinfobtn"
+        android:layout_width="244dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:minHeight="48dp"
+        android:onClick="nav_prof"
         android:text="@string/acc_info"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/acc_info"
         app:layout_constraintEnd_toStartOf="@+id/imageView9"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/acc_info"
-        app:layout_constraintVertical_bias="0.533"
-        android:layout_marginRight="84dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
-        android:layout_marginEnd="128dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginRight="108dp"
         android:text="@string/my_reserv"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/my_reserv"
         app:layout_constraintEnd_toStartOf="@+id/imageView10"
-        app:layout_constraintTop_toTopOf="@+id/my_reserv"
-        android:layout_marginRight="128dp" />
+        app:layout_constraintTop_toTopOf="@+id/my_reserv" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/tratBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/theater_rating"
@@ -254,28 +259,27 @@
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="140dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginRight="120dp"
         android:text="@string/privacy"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/privecy"
         app:layout_constraintEnd_toStartOf="@+id/imageView12"
         app:layout_constraintTop_toTopOf="@+id/privecy"
-        android:layout_marginRight="140dp" />
+        app:layout_constraintVertical_bias="0.533" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/acc_info"
-        app:layout_constraintEnd_toStartOf="@+id/textView19"
-        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="@+id/acc_info"
         app:layout_constraintTop_toTopOf="@+id/acc_info"
         app:layout_constraintVertical_bias="0.533"
         app:srcCompat="@drawable/ic_outline_account_circle_24"
-        android:layout_marginLeft="8dp"
         tools:ignore="VectorDrawableCompat" />
 
     <ImageView
@@ -283,19 +287,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="nav_prof"
         app:layout_constraintBottom_toBottomOf="@+id/acc_info"
         app:layout_constraintEnd_toEndOf="@+id/acc_info"
         app:layout_constraintTop_toTopOf="@+id/acc_info"
         app:layout_constraintVertical_bias="0.533"
         app:srcCompat="@drawable/ic_baseline_navigate_next_24"
-        android:layout_marginRight="8dp"
-        tools:ignore="VectorDrawableCompat" />
+        tools:ignore="VectorDrawableCompat,SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/my_reserv"
         app:layout_constraintEnd_toEndOf="@+id/my_reserv"
         app:layout_constraintTop_toTopOf="@+id/my_reserv"
@@ -309,19 +318,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="nav_ther"
         app:layout_constraintBottom_toBottomOf="@+id/theater_rating"
         app:layout_constraintEnd_toEndOf="@+id/theater_rating"
         app:layout_constraintTop_toTopOf="@+id/theater_rating"
         app:layout_constraintVertical_bias="0.533"
         app:srcCompat="@drawable/ic_baseline_navigate_next_24"
-        android:layout_marginRight="8dp"
-        tools:ignore="VectorDrawableCompat" />
+        tools:ignore="VectorDrawableCompat,SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/imageView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/privecy"
         app:layout_constraintEnd_toEndOf="@+id/privecy"
         app:layout_constraintTop_toTopOf="@+id/privecy"
@@ -436,5 +450,20 @@
         app:layout_constraintEnd_toEndOf="@+id/include2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/backback"
+        android:layout_width="27dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="16dp"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="backto"
+        app:layout_constraintStart_toStartOf="@+id/include2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24"
+        tools:ignore="SpeakableTextPresentCheck,VectorDrawableCompat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

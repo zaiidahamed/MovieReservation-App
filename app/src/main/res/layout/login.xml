@@ -76,7 +76,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.819"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/accinfobtn" />
 
     <EditText
         android:id="@+id/passwordLogin"
@@ -163,7 +163,7 @@
         app:srcCompat="@drawable/pngegg" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/accinfobtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

@@ -1,5 +1,6 @@
 package com.example.blueskycinema.Hasith;
 
+
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -71,4 +72,13 @@ public class add_movies extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+
+public class add_movies {
+
+
+
 }
