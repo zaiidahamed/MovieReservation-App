@@ -37,16 +37,14 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
 
 
-//    private int KeyCode;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
-
-
-
-
+        
 
     }
 
@@ -56,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    /////////////////////////////
     public void loadAddMovies (View view){
         setContentView(R.layout.add_movies);
         Intent intent = new Intent(this, add_movies.class);
@@ -65,11 +61,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-//    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        if(KeyCode == event.KEYCODE_BACK) {
-//            moveTaskToBack(true);
-//        }
-//        return super.onKeyDown(keyCode, event);
-//    }
+
 }

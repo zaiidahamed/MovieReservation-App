@@ -105,6 +105,8 @@ public class DB_Handler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+
+
         //create movie table
         String create_movies_table =
                 "CREATE TABLE "+MOVIE_TABLE+" ( "+
