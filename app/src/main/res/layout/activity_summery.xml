@@ -46,7 +46,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/moviePoster"
+            android:id="@+id/bl_moviePoster"
             android:layout_width="350dp"
             android:layout_height="200dp"
             android:layout_marginTop="36dp"
@@ -63,10 +63,10 @@
             android:background="#2B3543"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/moviePoster" />
+            app:layout_constraintTop_toBottomOf="@+id/bl_moviePoster" />
 
         <TextView
-            android:id="@+id/movieName2"
+            android:id="@+id/bl_movieName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
@@ -76,7 +76,7 @@
             app:layout_constraintEnd_toEndOf="@+id/view_summery"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="@+id/view_summery"
-            app:layout_constraintTop_toBottomOf="@+id/moviePoster" />
+            app:layout_constraintTop_toBottomOf="@+id/bl_moviePoster" />
 
         <TextView
             android:id="@+id/view_date"
@@ -89,7 +89,7 @@
             android:textColor="#8F8F8F"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/view_summery"
-            app:layout_constraintTop_toBottomOf="@+id/movieName2" />
+            app:layout_constraintTop_toBottomOf="@+id/bl_movieName" />
 
         <TextView
             android:id="@+id/view_time"
@@ -104,7 +104,7 @@
             app:layout_constraintEnd_toEndOf="@+id/view_summery" />
 
         <TextView
-            android:id="@+id/print_date1"
+            android:id="@+id/bl_date"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -131,7 +131,7 @@
             app:layout_constraintStart_toStartOf="@+id/view_summery" />
 
         <TextView
-            android:id="@+id/print_tot1"
+            android:id="@+id/bl_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
@@ -144,7 +144,7 @@
             app:layout_constraintEnd_toEndOf="@+id/view_summery" />
 
         <TextView
-            android:id="@+id/print_time1"
+            android:id="@+id/bl_time"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
@@ -152,9 +152,9 @@
             android:text="@string/print_time"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/print_date1"
+            app:layout_constraintBaseline_toBaselineOf="@+id/bl_date"
             app:layout_constraintEnd_toEndOf="@+id/view_summery" />
-
+<!--
         <EditText
             android:id="@+id/couponCode"
             android:layout_width="240dp"
@@ -193,14 +193,14 @@
             android:id="@+id/dis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="130dp"
             android:text="Coupon Discount"
             android:textColor="#8F8F8F"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.229"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/apply" />
+            app:layout_constraintTop_toBottomOf="@+id/view_summery" />
 
         <TextView
             android:id="@+id/show_dis"
@@ -229,30 +229,30 @@
             android:id="@+id/payable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="Amount Payable"
             android:textColor="#8F8F8F"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.22"
+            app:layout_constraintHorizontal_bias="0.105"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dis" />
-
+            tools:layout_editor_absoluteY="583dp" />
+-->
         <Button
             android:id="@+id/confirm"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="200dp"
             android:background="@drawable/green_btn"
             android:fontFamily="sans-serif"
+            android:onClick="confirmButton"
             android:text="@string/confirm"
             android:textAllCaps="false"
             android:textSize="20sp"
             app:backgroundTint="#4CD964"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.547"
+            app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/show_amnt" />
+            app:layout_constraintTop_toBottomOf="@+id/view_summery" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -8,13 +8,15 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="160dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="68dp"
+        android:layout_width="223dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="112dp"
         android:background="#000000"
-        android:text="Button"
+        android:onClick="loadReserveActivity"
+        android:text="Reserve Now"
         android:textSize="16sp"
         app:backgroundTint="#03A9F4"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,6 +34,23 @@
         app:backgroundTint="#03A9F4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="loadReasevations"
+        android:text="My reservations"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
