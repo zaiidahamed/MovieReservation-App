@@ -40,11 +40,9 @@ public class AddFood extends AppCompatActivity {
 
         startActivity(new Intent(context, FoodList.class));
     }
-
-
-
-
 }
+
+
 
 
 

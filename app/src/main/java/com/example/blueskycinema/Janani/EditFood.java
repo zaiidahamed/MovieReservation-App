@@ -59,10 +59,8 @@ public class EditFood extends AppCompatActivity {
                 else {
                     Toast.makeText(EditFood.this, "Not Updated!", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
-
-
     }
 }
+

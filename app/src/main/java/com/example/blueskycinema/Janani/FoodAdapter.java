@@ -32,8 +32,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.Holder> {
             this.context = context;
             this.arrayList = arrayList;
             db_handler = new DB_Handler(context);
-
-            //Initialize here
             databaseHelper = new DB_Handler(context);
         }
         @NonNull
@@ -51,11 +49,9 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.Holder> {
             String name = model.getFoodName();
             String price = model.getFoodPrice();
 
-
             //Set view
             holder.FName.setText(name);
             holder.FPrice.setText(price);
-
 
             //update food
             holder.editButton.setOnClickListener(new View.OnClickListener() {
@@ -67,8 +63,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.Holder> {
                 }
             });
 
-
-            //Delete Button Listener
+            //Delete Button
             holder.itemView.setOnLongClickListener(new View.OnLongClickListener(){
                 @Override
                 public boolean onLongClick(View v) {

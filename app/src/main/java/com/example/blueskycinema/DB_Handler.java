@@ -261,7 +261,7 @@ import java.util.ArrayList;
 
       //Janani function implementation
 
-      //Admin Add Food
+      //Theatre Add Food
 
       public long addFood(String foodName, String price) {
           //gets the data repository in write mode
@@ -277,8 +277,7 @@ import java.util.ArrayList;
           return newFood;
       }
 
-      //Admin Retrieve Food Data
-
+      //Theatre Retrieve Food Data
       public ArrayList<FoodModelClass> getAllFoodData(String orderBy) {
           ArrayList<FoodModelClass> arrayList = new ArrayList<>();
 
@@ -301,9 +300,7 @@ import java.util.ArrayList;
           db.close();
           return arrayList;
       }
-
       // Count data table records
-
       public int countFoodList() {
 
           SQLiteDatabase db = getReadableDatabase();

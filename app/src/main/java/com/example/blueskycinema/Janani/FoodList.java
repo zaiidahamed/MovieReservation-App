@@ -17,12 +17,8 @@ import com.example.blueskycinema.DB_Handler;
 import com.example.blueskycinema.R;
 
 public class FoodList extends AppCompatActivity {
-
-    Button add;
-    ListView listView;
     TextView count;
     Context context;
-
     RecyclerView mRecyclerView;
     DB_Handler databaseHelper;
 
@@ -36,24 +32,17 @@ public class FoodList extends AppCompatActivity {
 
         showRecord();
 
-//      add=findViewById(R.id.add);
-//      listView=findViewById(R.id.foodList);
         count=findViewById(R.id.foodCount);
         context= this;
 
         //Get food count from the table
         int countFoodList = databaseHelper.countFoodList();
         count.setText("There are "+countFoodList+" food items");
-
-
-
     }
-
         private void showRecord() {
             FoodAdapter adapter = new FoodAdapter(FoodList.this, databaseHelper.getAllFoodData(DB_Handler.FOOD_COLUMN_NAME+ " DESC"));
                 mRecyclerView.setAdapter(adapter);
         }
-
         @Override
          protected void onResume() {
             super.onResume();
@@ -66,3 +55,4 @@ public class FoodList extends AppCompatActivity {
             startActivity(intent);
         }
 }
+
