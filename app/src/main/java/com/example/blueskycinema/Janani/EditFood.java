@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.blueskycinema.DB_Handler;
@@ -16,7 +17,7 @@ import com.example.blueskycinema.R;
 public class EditFood extends AppCompatActivity {
 
     private EditText editTextFoodName, editTextFoodPrice;
-    private Button buttonSave;
+    Button buttonSave;
 
     DB_Handler db_handler;
     Context context;
